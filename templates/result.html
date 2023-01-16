@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Senior Project</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <h1>Result</h1>
+        <div>
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Info</th>
+                    <th scope="col">Available publicly</th>
+                    <th scope="col">Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  <tr>
+                    <td>DOB</td>
+                    {% if result['DOB']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['DOB'] %}
+                      <a href="{{i['url']}}"> Link</a>
+                    {% endfor %}
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td>Username</td>
+                    {% if result['username']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['username'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td>Full name</td>
+                    {% if result['fullName']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['fullName'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>First name</td>
+                    {% if result['fName']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['fName'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Last name</td>
+                    {% if result['lName']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['lName'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Name/Nickname</td>
+                    {% if result['name']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['name'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Phone number</td>
+                    {% if result['phoneNumber']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['phoneNumber'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td>Email</td>
+                    {% if result['email']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['email'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Work Place</td>
+                    {% if result['workPlace']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['workPlace'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Occupation</td>
+                    {% if result['occupation']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['occupation'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Education</td>
+                    {% if result['education']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['education'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Family Member</td>
+                    {% if result['familyMember']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['familyMember'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>  
+                  </tr>
+
+                  <tr>
+                    <td>Address</td>
+                    {% if result['adress']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['adress'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Gender</td>
+                    {% if result['gender']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['gender'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Relationship</td>
+                    {% if result['relationship']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['relationship'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td>Identification number</td>
+                    {% if result['ID']%}
+                      <td><img src = '/static/tick.jpg' width="16" height="16"></td>
+                    {% else %}
+                      <td><img src = '/static/x.png' width="16" height="16"></td>
+                    {% endif %}
+                    <td>
+                    {% for i in result['ID'] %}
+                      <a href="{{i['url']}}"> Link</a><br>
+                    {% endfor %}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>  
+        </div>
+
+        <div>
+          {% if result['email'] or result['phoneNumber']%}
+          <h1> box </h1>
+          {% for i in result['email'] %}
+            <a>{{i['data']}}</a>   
+          {% endfor %}
+          {% for i in result['phoneNumber'] %}
+            <a>{{i['data']}}</a>   
+          {% endfor %}
+          {% endif %}
+        </div>
+
+        <h1>Here are some pictures of you.</h1>
+        {% for i in result['picture'] %}
+        <img src="/static/images/pic{{loop.index0}}.jpg" width="250" height="250">
+        {% endfor %}
+        <h1>list of website with {{user}} account</h1>
+          {% for i in webList %}
+            <a href="{{i['url']}}">{{i['sitename']}}</a><br>
+          {% endfor %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+<!-- {% if result[i]==True %}
+                        <td><a href="{{links}}"> Link</a></td>
+                        <td>-</td>
+                    {% endif%} -->
