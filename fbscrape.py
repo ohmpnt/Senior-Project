@@ -18,9 +18,9 @@ def fbScrape(x:str)->list:
         "picture" : []
     }
     linkfb = "https://www.facebook.com/"+ x +"/about"
+    username = ""
     try:
         src=get_profile(x, cookies = "cookies.txt")
-        username = ""
         basic_info,contact_info,Education,Relationship,Work,Live= '','','','','',''
         if 'Basic info' in src:
             basic_info = src['Basic info']

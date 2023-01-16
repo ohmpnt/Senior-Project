@@ -12,20 +12,27 @@ from image import images
 
 def main(x:str)->list:
     # google 
+    usernames = []
     outputG,fbU,username =googleScrape(x)  
+    if username != "":
+        usernames.append(username)
 
     if fbU == "":
         fbU = x.replace(" ",".")
 
     #facebook    
     outputfb,username=fbScrape(fbU)
-
+    
     if  username == "":
         username =  x.replace(" ","")
-    username=re.sub(r'[^\w]', '', username) #remove symbol from username
+        usernames.append(username)
+    else:
+        usernames.append(username)
+
+    usernames = removeSymbol(usernames) #remove symbol from username
 
     #maigrete
-    outMaigrate,listOfWeb = maigret(username) 
+    outMaigrate,listOfWeb = maigret(usernames[0]) 
 
     # merge all the result together
     output = merge(outputfb,outputG)
@@ -76,10 +83,10 @@ def maskData (input:list) :
 
     return input
 
+def removeSymbol (input:list):
 
+    for count,i in enumerate(input):
+        input[count] = re.sub(r'[^\w]', '', i)
 
+    return input
 
-
-# x = [{'data': 'ohmsnow@gmail.com'},{'data':'dasdaSssvbmm@gmail.com'},{'data':'ict@gmail.com'}]
-# y = [{'data': '0971515951','lol':'kkasld'},{'data':'0851228378','lol':'kkasld'},{'data':'67123123123','lol':'kkasld'}]
-# massData(y)
