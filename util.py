@@ -79,7 +79,6 @@ def maskData (input:list) :
 
 
 
-main('tang kantapon')
 
 # x = [{'data': 'ohmsnow@gmail.com'},{'data':'dasdaSssvbmm@gmail.com'},{'data':'ict@gmail.com'}]
 # y = [{'data': '0971515951','lol':'kkasld'},{'data':'0851228378','lol':'kkasld'},{'data':'67123123123','lol':'kkasld'}]
