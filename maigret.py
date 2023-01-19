@@ -111,3 +111,4 @@ def listWeb (input):
 
     return listOfWeb  
 
+# maigret('ohmsnow')

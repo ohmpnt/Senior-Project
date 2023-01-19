@@ -246,6 +246,7 @@
               </table>  
         </div>
 
+        <!-- Infoga -->
         <div>
           {% if result['email'] or result['phoneNumber']%}
           <h1> box </h1>
@@ -258,6 +259,7 @@
           {% endif %}
         </div>
 
+        <!-- facebook pic and maigret / ++google lens -->
         <h1>Here are some pictures of you.</h1>
         {% for i in result['picture'] %}
         <img src="/static/images/pic{{loop.index0}}.jpg" width="250" height="250">
