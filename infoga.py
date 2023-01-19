@@ -7,7 +7,7 @@ def infoga(input:str):
     for count,info in enumerate(input) :
         s = info['data']
         curPath = os.getcwd()
-        os.system(f' {curPath}\Infoga\infoga.py" --info {s} --breach -v 3 --report reports/infogaOutput.txt')
+        os.system(f'python "{curPath}\infoga\infoga.py" --info {s} --breach -v 3 --report reports/infogaOutput.txt')
         try : 
             file = open('reports/infogaOutput.txt')
             data = file.read()
@@ -22,4 +22,4 @@ def infoga(input:str):
     return input
 
 
-
+# infoga([{'data' :'ohmsnow@gmail.com'}])

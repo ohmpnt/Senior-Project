@@ -33,7 +33,6 @@ def main(x:str)->list:
 
     #maigrete
     outMaigrate,listOfWeb = maigret(usernames[0]) 
-
     # merge all the result together
     output = merge(outputfb,outputG)
     finalOut = merge(output,outMaigrate)
@@ -47,9 +46,6 @@ def main(x:str)->list:
     images(finalOut['picture'])
     pprint(finalOut)
     return finalOut,listOfWeb,username
-
-
-
 
 
 def merge (dict_1:dict, dict_2:dict):
@@ -90,3 +86,4 @@ def removeSymbol (input:list):
 
     return input
 
+# main("Kantapon Srigadphach")
