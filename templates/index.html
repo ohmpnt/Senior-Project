@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
     <div>
         <div class="flex flex-cols mb-40">
@@ -17,22 +19,27 @@
             <div class="flex justify-center mb-16 ">
                 <h1 class="text-6xl font-bold">HAWKER</h1>
             </div>
-            
+
             <div class="flex justify-center mb-24">
                 <form class="relative flex flex-cols w-3/4" role="search" action="/result" method="post">
-                    <input class= "p-5 w-full h-16 border-black border-4 outline-none rounded-full" type="text" aria-label="Search" name="name_input">
-                    <button class="absolute inset-y-0 right-0 absolute fa fa-search fa-2x h-16 mr-5" type="submit" ></button>
+                    <input class="p-5 w-full h-16 border-black border-4 outline-none rounded-full" type="text"
+                        aria-label="Search" name="name_input">
+                    <button class="absolute inset-y-0 right-0 absolute fa fa-search fa-2x h-16 mr-5"
+                        type="submit"></button>
                 </form>
-                
+
             </div>
 
             <div class="grid justify-center mb-40">
-                <p class="flex justify-center text-red-500 text-xl font-medium">This website will attempt to find your personal sensitive information that is publicly available.</p>
-                <p class="flex justify-center text-red-500 text-xl font-medium">However, the information will not recorded.</p>
+                <p class="flex justify-center text-red-500 text-xl font-medium">This website will attempt to find your
+                    personal sensitive information that is publicly available.</p>
+                <p class="flex justify-center text-red-500 text-xl font-medium">However, the information will not
+                    recorded.</p>
             </div>
 
             <div class="flex justify-center">
-                <p class="flex justify-center text-black text-3xl font-medium">Estimating Public Exposure and Sensitive data Using reconnaissance tool and Web Scraping</p>
+                <p class="flex justify-center text-black text-3xl font-medium">Estimating Public Exposure and Sensitive
+                    data Using reconnaissance tool and Web Scraping</p>
             </div>
         </div>
     </div>
@@ -44,4 +51,5 @@
         </form>
     </div> -->
 </body>
+
 </html>
