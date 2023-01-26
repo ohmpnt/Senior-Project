@@ -45,6 +45,7 @@ def main(x:str)->list:
     finalOut['ID']= maskData(finalOut['ID'])
     images(finalOut['picture'])
     pprint(finalOut)
+    pprint(listOfWeb)
     return finalOut,listOfWeb,username
 
 
@@ -86,4 +87,48 @@ def removeSymbol (input:list):
 
     return input
 
-# main("Kantapon Srigadphach")
+
+# def test():
+#     x = {'DOB': [],
+#         'ID': [],
+#         'address': [{'data': '',
+#                     'tag': 'social network',
+#                     'url': 'https://www.facebook.com/Songpon.te/about'}],
+#         'education': [],
+#         'email': [{'data': '*ct@mahidol.ac.th (not breach)',
+#                     'tag': 'unknow',
+#                     'url': 'https://www.ict.mahidol.ac.th/people/staff-contact/songpon-teerakanok/'}],
+#         'fName': [],
+#         'familyMember': [],
+#         'fullName': [{'data': '',
+#                     'tag': 'social network',
+#                     'url': 'https://www.facebook.com/Songpon.te/about'}],
+#         'gender': [{'data': '',
+#                     'tag': 'social network',
+#                     'url': 'https://www.facebook.com/Songpon.te/about'}],
+#         'lName': [],
+#         'name': [],
+#         'occupation': [],
+#         'phoneNumber': [],
+#         'picture': [{'data': 'https://scontent.fbkk22-1.fna.fbcdn.net/v/t39.30808-6/299835346_10222653853429438_238771487539892262_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=100&ccb=1-7&_nc_sid=85a577&efg=eyJpIjoidCJ9&_nc_ohc=CcGPeRZCb-wAX9QzHZz&tn=-DFwpzWxTywRKSgz&_nc_ht=scontent.fbkk22-1.fna&oh=00_AfBApN3rT1-ykUiFiYaehxjal1iVRuq7fW8YgRnoc6dKIg&oe=63D30FE5&manual_redirect=1',
+#                     'tag': 'social network',
+#                     'url': 'https://www.facebook.com/Songpon.te/about'}],
+#         'relationship': [],
+#         'username': [],
+#         'workPlace': [{'data': '',
+#                         'tag': 'social network',
+#                         'url': 'https://www.facebook.com/Songpon.te/about'}]}
+
+#     y = [{'sitename': 'SlideShare', 'url': 'https://slideshare.net/songponteerakanok'},
+#         {'sitename': 'Pinterest',
+#         'url': 'https://www.pinterest.com/songponteerakanok/'},
+#         {'sitename': 'Strava',
+#         'url': 'https://www.strava.com/athletes/songponteerakanok'},
+#         {'sitename': 'F6S', 'url': 'https://www.f6s.com/songponteerakanok'},
+#         {'sitename': 'TJournal',
+#         'url': 'https://tjournal.ru/search/v2/subsite/relevant?query=songponteerakanok'},
+#         {'sitename': 'DonationsAlerts',
+#         'url': 'https://www.donationalerts.com/r/songponteerakanok'}]
+
+#     return x,y,'songponteerakanok'
+# main("songpon teerakanok")
