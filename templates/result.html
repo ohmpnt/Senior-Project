@@ -295,9 +295,9 @@
     <div class="flex flex-col">
       <h1 class="text-3xl font-medium p-5">Here are some pictures of you.</h1>
       <div class="flex flex-row">
-      {% for i in result['picture'] %}
-      <img src="/static/images/pic{{loop.index0}}.jpg" class="p-5 ml-5 w-80 h-60">
-      {% endfor %}
+        {% for i in result['picture'] %}
+        <img src="/static/images/pic{{loop.index0}}.jpg" class="p-5 ml-5 w-80 h-60">
+        {% endfor %}
       </div>
     </div>
 
@@ -308,12 +308,105 @@
         <p class="text-3xl font-medium text-red-500">Name&nbsp;</p>
         <p class="text-3xl font-medium">Account</p>
       </div>
-      <div class="grid grid-cols-6 gap-4 p-5 ml-5"> 
-      {% for i in webList %}
-      <a class="text-blue-400 underline hover:text-blue-300" href="{{i['url']}}">{{i['sitename']}}</a><br>
-      {% endfor %}
+      <div class="grid grid-cols-6 gap-4 p-5 ml-5">
+        {% for i in webList %}
+        <a class="text-blue-400 underline hover:text-blue-300" href="{{i['url']}}">{{i['sitename']}}</a><br>
+        {% endfor %}
       </div>
     </div>
+
+
+    <!-- Risk level -->
+    <div class="flex flex-col">
+      <div class="flex flex-row p-5">
+        <p class="text-3xl font-medium">Risk Level:&nbsp;</p>
+        <p class="text-3xl font-medium text-red-500">{{level}}</p>
+      </div>
+
+      <div class="flex">
+        {% if level=="High"%}
+        <div class="flex justify-center items-center">
+          <img src="" class="">
+        </div>
+        {% elif level=="Mediumhigh"%}
+        <div class="flex justify-center items-center">
+          <img src="" class="">
+        </div>
+        {% elif level=="Medium"%}
+        <div class="flex justify-center items-center">
+          <img src="" class="">
+        </div>
+        {% elif level=="Mediumlow"%}
+        <div class="flex justify-center items-center">
+          <img src="" class="">
+        </div>
+        {% else %}
+        <!-- level=="Low"-->
+        <div class="flex justify-center items-center">
+          <img src="" class="">
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Suggestion follow by Risk level -->
+    <div class="flex flex-col">
+      <div class="flex flex-row p-5">
+        <p class="text-3xl font-medium">Suggestion:&nbsp;</p>
+        <p class="text-3xl font-medium text-red-500">{{level}}</p>
+      </div>
+
+      <div class="flex p-5">
+        {% if level=="High"%}
+        <div class="flex flex-col justify-center">
+          <div class="text-lg">
+            Severe threat on cyber-attack
+          </div>
+          <div class="text-lg">
+            Sub Information
+          </div>
+        </div>
+        {% elif level=="Mediumhigh"%}
+        <div class="flex flex-col justify-center">
+          <div class="text-lg text-center">
+            Significant threat on cyber-attack
+          </div>
+          <div class="text-lg text-center">
+            Sub Information
+          </div>
+        </div>
+        {% elif level=="Medium"%}
+        <div class="flex flex-col justify-center">
+          <div class="text-lg">
+            Moderate threat on cyber-attackn
+          </div>
+          <div class="text-lg">
+            Sub Information
+          </div>
+        </div>
+        {% elif level=="Mediumlow"%}
+        <div class="flex flex-col justify-center">
+          <div class="text-lg">
+            Minor threat on cyber-attack
+          </div>
+          <div class="text-lg">
+            Sub Information
+          </div>
+        </div>
+        {% else %}
+        <!-- level=="Low"-->
+        <div class="flex flex-col justify-center">
+          <div class="text-lg">
+            Negligible threat on cyber-attack
+          </div>
+          <div class="text-lg">
+            Sub Information
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
   </div>
 </body>
 

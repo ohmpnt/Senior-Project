@@ -11,10 +11,6 @@ app.secret_key = "lll"
 def index():
     return render_template("index.html")
 
-# @app.route("/loading", methods=["POST"])
-# def loading():
-#     return render_template("loading.html")
-
 @app.route("/result", methods=["POST","GET"])
 def search():
     output,listOfweb,username= main(request.form['name_input'])
