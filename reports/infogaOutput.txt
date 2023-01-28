@@ -1,2 +1,2 @@
-[+] Email: ict@mahidol.ac.th (171.97.47.33)
+[+] Email: ict@mahidol.ac.th (223.206.35.144)
 %s- Not found information (on shodan) for this email, search this ip/ips on internet.. >> This email wasn't leaked
