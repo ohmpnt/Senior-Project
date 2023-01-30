@@ -2,7 +2,24 @@
 import os
 import json
 from pprint import pprint
-def maigret(input:str):
+
+
+
+def maigrets(input: list):
+    newOut = {}
+    listWebOut = []
+    for i in input:
+        temp,listWeb =profileSearch(i)
+        newOut = merge(newOut,temp)
+        listWebOut= listWebOut+listWeb
+
+    return newOut,listWebOut
+
+
+
+def profileSearch(input:str):
+
+    print(input)
     curPath = os.getcwd()
     os.system(f'python "{curPath}/maigret/maigret.py" {input} --json ndjson --timeout 8 ')
 
@@ -19,7 +36,7 @@ def maigret(input:str):
         weblist = listWeb(output)
         return data,weblist
     except :
-        return [],[]
+        print('something worng!')
     
 
 
@@ -100,15 +117,100 @@ def pageData (input:list):
 
 
 
+def merge (dict_1:dict, dict_2:dict):
+    for key, value in dict_2.items():
+        if key in dict_1:
+            if value:
+                for i in value:
+                    dict_1[key].append(i)  
+        else:
+            dict_1[key] = value
 
+    return dict_1
 
 def listWeb (input):
 
-    listOfWeb = []
+    showsite = ["Youtube","Facebook","Amazon","Reddit","VK","Instagram","Twitch","Ebay","Twitter","Wordpress","Pornhub","Github","Spotify","Tiktok","Xvideos","Tumblr","Pinterest","Patreon"]
+    # listOfWeb = [{'sitename' : temp['sitename'], 
+    #                     'url' : temp['url_user'],
+    #                     "img" : f"{firstLetter}.png"}]
+    listOfWeb=[{'sitename' : "Youtube", 
+                       'url' : '',
+                        "img" : "Youtube_grey.png"},
+                {'sitename' : "Facebook", 
+                       'url' : '',
+                        "img" : "Facebook_grey.png"},
+                {'sitename' : "Amazon", 
+                       'url' : '',
+                        "img" : "Amazon_grey.png"},
+                {'sitename' : "Reddit", 
+                       'url' : '',
+                        "img" : "Reddit_grey.png"},
+                {'sitename' : "VK", 
+                       'url' : '',
+                        "img" : "VK_grey.png"},
+                {'sitename' : "Instagram", 
+                       'url' : '',
+                        "img" : "Instagram_grey.png"},
+                {'sitename' : "Twitch", 
+                       'url' : '',
+                        "img" : "Twitch_grey.png"},
+                {'sitename' : "Ebay", 
+                       'url' : '',
+                        "img" : "Ebay_grey.png"},
+                {'sitename' : "Twitter", 
+                       'url' : '',
+                        "img" : "Twitter_grey.png"},
+                {'sitename' : "Wordpress", 
+                       'url' : '',
+                        "img" : "Wordpress_grey.png"},
+                {'sitename' : "Pornhub", 
+                       'url' : '',
+                        "img" : "Pornhub_grey.png"},
+                {'sitename' : "Github", 
+                       'url' : '',
+                        "img" : "Github_grey.png"},
+                {'sitename' : "Spotify", 
+                       'url' : '',
+                        "img" : "Spotify_grey.png"},
+                {'sitename' : "Tiktok", 
+                       'url' : '',
+                        "img" : "Tiktok_grey.png"},
+                {'sitename' : "Xvideos", 
+                       'url' : '',
+                        "img" : "Xvideos_grey.png"},
+                {'sitename' : "Tumblr", 
+                       'url' : '',
+                        "img" : "Tumblr_grey.png"},
+                {'sitename' : "Pinterest", 
+                       'url' : '',
+                        "img" : "Pinterest_grey.png"},
+                {'sitename' : "Patreon", 
+                       'url' : '',
+                        "img" : "Patreon_grey.png"}]
     for i in input:
+        
         temp = i
-        listOfWeb.append({'sitename' : temp['sitename'], 'url' : temp['url_user']})
+        sitename = temp['sitename']
+        firstLetter = sitename[0:1]
+        if sitename in showsite:
+            index = checkdupe(listOfWeb,sitename)
+            listOfWeb[index]={'sitename' : temp['sitename'], 
+                            'url' : temp['url_user'],
+                            "img" : f"{sitename}.png"}
+        else:
+            listOfWeb.append({'sitename' : temp['sitename'], 
+                            'url' : temp['url_user'],
+                            "img" : f"{firstLetter}.png"})
 
     return listOfWeb  
+
+
+def checkdupe(input :list ,sitename:str):
+
+    for count,data in enumerate(input):
+        if sitename == data['sitename']:
+            return count
+
 
 # maigret('ohmsnow')

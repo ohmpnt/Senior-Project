@@ -107,7 +107,7 @@ def fbScrape(x:str)->list:
                                     }) 
     except:
         print("cannot find the user's facebook")
-        # images(result["picture"])
+    # images(result["picture"])
     return result,username
 
 # fbScrape('fubuki.tang')
