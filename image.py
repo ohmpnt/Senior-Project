@@ -11,7 +11,12 @@ def images(input:list):
 
 def loadImage(num:int,src:str):
     imageUrl = src
-    img_data = requests.get(imageUrl).content
+    url = imageUrl[imageUrl.rfind("https"):]
+    img_data = requests.get(url).content
     curPath = os.getcwd()
     with open(f'{curPath}\static\images\pic{num}.jpg', 'wb') as handler:
         handler.write(img_data)
+
+
+
+loadImage(1,"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSO_43PPSdPKYlNrjSXcf1fLzruLzbgEDmjhSqE-XJpLGso3vTl")

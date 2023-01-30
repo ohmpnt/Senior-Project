@@ -1,12 +1,12 @@
 from googleScrape import googleScrape
 from fbscrape import fbScrape
-from maigret import maigret
+from maigret import maigrets
 from infoga import infoga
 import re
 from pprint import pprint
 import math
 from image import images    
-
+from Googlelens2 import *
 
 
 
@@ -28,11 +28,12 @@ def main(x:str)->list:
         usernames.append(username)
     else:
         usernames.append(username)
+        usernames.append(x.replace(" ",""))
 
     usernames = removeSymbol(usernames) #remove symbol from username
-
+    usernames = list(dict.fromkeys(usernames)) #remove duplicate
     #maigrete
-    outMaigrate,listOfWeb = maigret(usernames[0]) 
+    outMaigrate,listOfWeb = maigrets(usernames) 
     # merge all the result together
     output = merge(outputfb,outputG)
     finalOut = merge(output,outMaigrate)
@@ -43,9 +44,11 @@ def main(x:str)->list:
     finalOut['email'] = maskData(finalOut['email'])
     finalOut['phoneNumber'] = maskData(finalOut['phoneNumber'])
     finalOut['ID']= maskData(finalOut['ID'])
-    images(finalOut['picture'])
     pprint(finalOut)
     pprint(listOfWeb)
+    images(finalOut['picture'])  #load images 
+    revImages(finalOut['picture']) #do reverse image 
+    
     return finalOut,listOfWeb,username
 
 
@@ -86,6 +89,7 @@ def removeSymbol (input:list):
         input[count] = re.sub(r'[^\w]', '', i)
 
     return input
+
 
 # def test():
 #     x = {'DOB': [],
@@ -130,5 +134,3 @@ def removeSymbol (input:list):
 #         'url': 'https://www.donationalerts.com/r/songponteerakanok'}]
 
 #     return x,y,'songponteerakanok'
-
-# main("songpon teerakanok")

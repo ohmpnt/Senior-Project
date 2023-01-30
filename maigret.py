@@ -2,7 +2,22 @@
 import os
 import json
 from pprint import pprint
-def maigret(input:str):
+
+
+
+def maigrets(input: list):
+    newOut = {}
+    listWebOut = []
+    for i in input:
+        temp,listWeb =profileSearch(i)
+        newOut = merge(newOut,temp)
+        listWebOut= listWebOut+listWeb
+
+    return newOut,listWebOut
+
+
+
+def profileSearch(input:str):
     curPath = os.getcwd()
     os.system(f'python "{curPath}/maigret/maigret.py" {input} --json ndjson --timeout 8 ')
 
@@ -19,7 +34,7 @@ def maigret(input:str):
         weblist = listWeb(output)
         return data,weblist
     except :
-        return [],[]
+        print('something worng!')
     
 
 
@@ -100,14 +115,32 @@ def pageData (input:list):
 
 
 
+def merge (dict_1:dict, dict_2:dict):
+    for key, value in dict_2.items():
+        if key in dict_1:
+            if value:
+                for i in value:
+                    dict_1[key].append(i)  
+        else:
+            dict_1[key] = value
 
+    return dict_1
 
 def listWeb (input):
 
-    listOfWeb = []
+    showsite = ["Youtube","Facebook","Amazon","Reddit","VK","Instagram","Twitch","Ebay","Twitter","Wordpress","Pornhub","Github","Spotify","Tiktok","Xvideos","Tumblr","Printerest"]
+    listOfWeb = [{'sitename' : temp['sitename'], 
+                        'url' : temp['url_user'],
+                        "img" : f"{firstLetter}.png"}]
     for i in input:
+        
         temp = i
-        listOfWeb.append({'sitename' : temp['sitename'], 'url' : temp['url_user']})
+        sitename = temp['sitename']
+        firstLetter = sitename[0:1]
+
+        listOfWeb.append({'sitename' : temp['sitename'], 
+                        'url' : temp['url_user'],
+                        "img" : f"{firstLetter}.png"})
 
     return listOfWeb  
 
