@@ -19,4 +19,4 @@ def loadImage(num:int,src:str):
 
 
 
-loadImage(1,"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSO_43PPSdPKYlNrjSXcf1fLzruLzbgEDmjhSqE-XJpLGso3vTl")
+# loadImage(1,"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSO_43PPSdPKYlNrjSXcf1fLzruLzbgEDmjhSqE-XJpLGso3vTl")

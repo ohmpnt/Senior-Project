@@ -15,7 +15,7 @@
     <div class="flex items-center border-b-2 border-gray-300 w-full h-16 fixed z-50 bg-white">
       <a class="fa fa-angle-left fa-3x ml-5 mr-10 hover:text-blue-400 " href="/"></a>
       <p class="text-lg font-medium mr-2">Searching at:</p>
-      <p class="text-lg font-medium text-red-500">Name</p>
+      <p class="text-lg font-medium text-red-500">{{name}}</p>
     </div>
 
     <div class="flex flex-row w-full">
@@ -293,10 +293,17 @@
 
     <!-- facebook pic and maigret / ++google lens  image-->
     <div class="flex flex-col mt-16">
-      <h1 class="text-3xl font-medium p-5 mb-5">Here are some pictures of you.</h1>
+      <h1 class="text-3xl font-medium p-5 mb-5">Here are some pictures of {{name}}.</h1>
       <div class="flex flex-row">
         {% for i in result['picture'] %}
+        {%  set num = loop.index0 %}
         <img src="/static/images/pic{{loop.index0}}.jpg" class="p-5 ml-5 w-80 h-60">
+
+          {% for j in range(0,3) %}
+          <img src="/static/RevImage/pic{{num}}{{j}}.jpg" class="p-5 ml-5 w-80 h-60">
+          {%  endfor  %}
+
+
         {% endfor %}
       </div>
     </div>
@@ -305,15 +312,14 @@
     <div class="flex flex-col mt-16">
       <div class="flex flex-row p-5 mb-5">
         <p class="text-3xl font-medium">List of Website with&nbsp;</p>
-        <p class="text-3xl font-medium text-red-500">Name&nbsp;</p>
+        <p class="text-3xl font-medium text-red-500">{{user}}&nbsp;</p>
         <p class="text-3xl font-medium">Account</p>
       </div>
       <div class="grid grid-cols-6 gap-4 p-5 ml-5">
         {% for i in webList %}
-        <!-- {% if i.sitename == "Pinterest" %}
-        <img src="/static/social/Pinterest.png">
-        {% endif %}  -->
-        <a class="text-blue-400 underline hover:text-blue-300" href="{{i['url']}}">{{i['sitename']}}</a><br>
+        
+        
+        <a class="text-blue-400 underline hover:text-blue-300" href="{{i['url']}}"><img src="/static/icon/{{i['img']}}" title="{{i['sitename']}}"></a><br>
         {% endfor %}
       </div>
     </div>

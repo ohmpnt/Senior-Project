@@ -9,7 +9,6 @@ import time
 import re
 def search_picture_link(URL :str):
 
-
     curPath = os.getcwd()
     print(curPath)
     driver = webdriver.Chrome(f"{curPath}/ggDriver/chromedriver.exe")

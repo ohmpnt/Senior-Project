@@ -1,4 +1,5 @@
 import re
+import os
 # x = {
 #     "ID" : "123123",
 #     "lol" : "123522"
@@ -16,9 +17,11 @@ import re
 #     email[count]=data
 
 # print(email)
-x = "data:dasdasdasd"
+# x = "data:dasdasdasd"
 
-if x.startswith("data:") :
-    print("yea")
-else:
-    print("no")
+# if x.startswith("data:") :
+#     print("yea")
+# else:
+#     print("no")
+
+
