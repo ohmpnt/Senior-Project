@@ -16,6 +16,7 @@ def search():
     output,listOfweb,username= main(request.form['name_input'])
     # x= request.form['name_input']
     # output,listOfweb,username= test()
+    print("listOfweb", listOfweb)
     return render_template("result.html",result=output,webList=listOfweb,user=username)
 
 
