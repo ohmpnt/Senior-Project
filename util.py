@@ -87,7 +87,6 @@ def removeSymbol (input:list):
 
     return input
 
-
 # def test():
 #     x = {'DOB': [],
 #         'ID': [],
@@ -131,4 +130,5 @@ def removeSymbol (input:list):
 #         'url': 'https://www.donationalerts.com/r/songponteerakanok'}]
 
 #     return x,y,'songponteerakanok'
+
 # main("songpon teerakanok")
