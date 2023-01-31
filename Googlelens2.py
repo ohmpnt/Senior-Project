@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 from pprint import pprint
@@ -8,9 +9,10 @@ import requests
 import time
 import re
 def search_picture_link(URL :str):
-
     curPath = os.getcwd()
-    print(curPath)
+    # chrome_options = Options()
+    # chrome_options.add_argument("--headless")
+    # , options=chrome_options
     driver = webdriver.Chrome(f"{curPath}/ggDriver/chromedriver.exe")
     driver.maximize_window()
     driver.get("https://images.google.com/")

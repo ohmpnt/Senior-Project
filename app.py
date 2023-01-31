@@ -19,8 +19,8 @@ def index():
 def search():
     output,listOfweb,username,names= main(request.form['name_input'])
     # x= request.form['name_input']
-    # output,listOfweb,username= test()
-    return render_template("result.html",result=output,webList=listOfweb,user=username,name =names)
+    # output,listOfweb,username,names= test()
+    return render_template("result.html",result=output,webList=listOfweb,user=username,name=names)
 
 
 if __name__=="__main__":
