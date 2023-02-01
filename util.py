@@ -262,7 +262,7 @@ def removeSymbol (input:list):
 #   'sitename': 'TRASHBOX.RU',
 #   'url': 'https://trashbox.ru/users/Tangkantapon'}]
 
-#     return x,y,'songponteerakanok'
+#     return x,y,'Tang kantapon','Tang'
 
 
-main("Tang kantapon")
+# main("Tang kantapon")
