@@ -25,3 +25,18 @@ import os
 #     print("no")
 
 
+
+list1 = [{"data" : "lol"},{"data" : "k"},{"data" : "lol"},{"data" : "lol"}]
+list2 = [{"data" : "k"}]
+
+if list2[0] in list1:
+    print(True)
+else:
+    print(False)
+
+
+# newlist = list(dict.fromkeys(list1))
+
+# print(newlist)
+
+

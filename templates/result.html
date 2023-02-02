@@ -422,7 +422,7 @@
       <p class="text-3xl font-medium text-red-500">{{name}}</p>
     </div>
 
-    <div class="flex flex-col">
+    <!-- <div class="flex flex-col">
       {% for i in result['picture'] %}
       {% set num = loop.index0 %}
       <div class="flex">
@@ -437,7 +437,7 @@
         {% endfor %}
       </div>
       {% endfor %}
-    </div>
+    </div> -->
 
     <!-- <div class="flex flex-row bg-purple-400 p-5">
         <div class="flex flex-col bg-red-400">
@@ -454,6 +454,27 @@
           {% endfor %}
         </div>
       </div> -->
+      
+    {% for i in result['picture'] %}
+    {% set num = loop.index0 %}
+    
+    <div class="flex flex-row p-5">
+      <div class="flex flex-col">
+        <img src="/static/images/pic{{loop.index0}}.jpg" class="p-5 ml-5 w-80 h-60">
+      </div>
+
+      {% for j in range(0,3) %}
+
+      <div class="flex flex-row">
+        <img src="/static/RevImage/pic{{num}}{{j}}.jpg" class="p-5 ml-5 w-80 h-60">
+      </div>
+        {% endfor %}
+      </div>
+        {% endfor %}
+      
+
+    
+    
 
 
     <!-- maigret list website-->
@@ -478,28 +499,39 @@
     <div class="flex flex-col mt-16">
       <div class="flex flex-row p-5 mb-5">
         <p class="text-3xl font-medium">Risk Level:&nbsp;</p>
-        <p class="text-3xl font-medium text-red-500">{{level}}</p>
+        <p class="text-3xl font-medium text-red-500">
+          {% if level == 1 %}
+            Low
+          {% elif level == 2 %}
+            Low-Medium
+          {% elif level == 3 %}
+            Medium
+          {% elif level == 4 %}
+            Medium-High
+          {% else %}
+            High
+          {% endif %}
+        </p>
       </div>
 
       <div class="flex justify-center mt-5">
-        <!-- {% if level=="High"%} -->
+        {% if level==5%}
         <div class="flex justify-center items-center">
           <img src="/static/vector/H.png" class="w-5/12">
         </div>
-        {% elif level=="Mediumhigh"%}
+        {% elif level==4%}
         <div class="flex justify-center items-center">
           <img src="/static/vector/MH.png" class="w-5/12">
         </div>
-        {% elif level=="Medium"%}
+        {% elif level==3%}
         <div class="flex justify-center items-center">
           <img src="/static/vector/M.png" class="w-5/12">
         </div>
-        {% elif level=="Mediumlow"%}
+        {% elif level==2%}
         <div class="flex justify-center items-center">
           <img src="/static/vector/ML.png" class="w-5/12">
         </div>
         {% else %}
-        <!-- level=="Low"-->
         <div class="flex justify-center items-center">
           <img src="/static/vector/L.png" class="w-5/12">
         </div>
@@ -511,7 +543,19 @@
     <div class="flex flex-col mt-16">
       <div class="flex flex-row p-5 mb-5">
         <p class="text-3xl font-medium">Suggestion:&nbsp;</p>
-        <p class="text-3xl font-medium text-red-500">{{level}}</p>
+        <p class="text-3xl font-medium text-red-500">
+          {% if level == 1 %}
+            Low
+          {% elif level == 2 %}
+            Low-Medium
+          {% elif level == 3 %}
+            Medium
+          {% elif level == 4 %}
+            Medium-High
+          {% else %}
+            High
+          {% endif %}
+        </p>
       </div>
 
       <div class="flex p-5">
@@ -569,8 +613,3 @@
 </body>
 
 </html>
-
-<!-- {% if result[i]==True %}
-                        <td><a href="{{links}}"> Link</a></td>
-                        <td>-</td>
-                    {% endif%} -->

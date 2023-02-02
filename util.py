@@ -7,6 +7,7 @@ from pprint import pprint
 import math
 from image import images    
 from Googlelens2 import *
+from riskEval import calculateRisk
 import shutil
 
 
@@ -52,10 +53,11 @@ def main(x:str)->list:
     pprint(listOfWeb)
     images(finalOut['picture'])  #load images 
     revImages(finalOut['picture']) #do reverse image 
-
+    riskLevel = calculateRisk(finalOut)
+    print(riskLevel)
     shutil.rmtree("reports")
 
-    return finalOut,listOfWeb,usernames[0],x
+    return finalOut,listOfWeb,usernames[0],x,riskLevel
 
 
 def merge (dict_1:dict, dict_2:dict):
