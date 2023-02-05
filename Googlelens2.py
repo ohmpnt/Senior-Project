@@ -52,7 +52,7 @@ def revImages(input :list):
     for i in input:
         result.append(search_picture_link(i['data']))
 
-    # print(result)
+    print(result)
     for count,images in enumerate(result):
         
         for count1,image in enumerate(images):
