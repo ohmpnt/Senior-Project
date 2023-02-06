@@ -13035,6 +13035,21 @@ video {
   border-color: rgba(235, 204, 91, var(--tw-border-opacity));
 }
 
+.border-stone-50 {
+  --tw-border-opacity: 1;
+  border-color: rgba(50, 49, 49, var(--tw-border-opacity));
+}
+
+.border-stone-100 {
+  --tw-border-opacity: 1;
+  border-color: rgba(34, 34, 34, var(--tw-border-opacity));
+}
+
+.border-stone-300 {
+  --tw-border-opacity: 1;
+  border-color: rgba(92, 92, 92, var(--tw-border-opacity));
+}
+
 .border-yellow-50 {
   --tw-border-opacity: 1;
   border-color: rgba(255, 251, 235, var(--tw-border-opacity));

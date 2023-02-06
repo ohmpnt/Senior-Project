@@ -24,15 +24,15 @@
         <table class="w-3/4 ml-24">
           <thead class="bg-amber-50">
             <tr class="text-black">
-              <th class="border-l-8 border-amber-50 p-7" scope="col">EXPOSE INFORMATION</th>
-              <th class="border-amber-50 p-7" scope="col">AVAILABLE PUBLICLY</th>
-              <th class="border-amber-50 p-7" scope="col">FOUND AT</th>
+              <th class="text-xl border-l-8 border-amber-50 p-7" scope="col">EXPOSE INFORMATION</th>
+              <th class="text-xl border-amber-50 p-7" scope="col">AVAILABLE PUBLICLY</th>
+              <th class="text-xl border-amber-50 p-7" scope="col">FOUND AT</th>
             </tr>
           </thead>
           <tbody>
 
             <tr class="bg-stone-50 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">DOB</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">DOB</td>
               {% if result['DOB']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -40,14 +40,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['DOB'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-100 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">Username</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Username</td>
               {% if result['username']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -55,14 +55,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['username'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-50 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">Full name</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Full name</td>
               {% if result['fullName']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -70,14 +70,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['fullName'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-100 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">First name</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">First name</td>
               {% if result['fName']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -85,14 +85,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['fName'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-50 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">Last name</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Last name</td>
               {% if result['lName']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -100,14 +100,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['lName'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-100 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">Name/Nickname</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Name/Nickname</td>
               {% if result['name']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -115,14 +115,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['name'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-50 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">Phone number</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Phone number</td>
               {% if result['phoneNumber']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -130,14 +130,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['phoneNumber'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-100 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">Email</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Email</td>
               {% if result['email']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -145,14 +145,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['email'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-50 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">Work Place</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Work Place</td>
               {% if result['workPlace']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -160,14 +160,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['workPlace'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-100 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">Occupation</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Occupation</td>
               {% if result['occupation']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -175,14 +175,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['occupation'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-50 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">Education</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Education</td>
               {% if result['education']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -190,14 +190,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['education'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-100 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">Family Member</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Family Member</td>
               {% if result['familyMember']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -205,14 +205,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['familyMember'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-50 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">Address</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Address</td>
               {% if result['adress']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -220,14 +220,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['adress'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-100 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">Gender</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Gender</td>
               {% if result['gender']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -235,14 +235,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['gender'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-50 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">Relationship</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Relationship</td>
               {% if result['relationship']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -250,14 +250,14 @@
               {% endif %}
               <td class="">
                 {% for i in result['relationship'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
             </tr>
 
             <tr class="bg-stone-100 transition duration-300 ease-in-out hover:bg-stone-300">
-              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-lg">Identification number</td>
+              <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Identification number</td>
               {% if result['ID']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
@@ -265,7 +265,7 @@
               {% endif %}
               <td class="">
                 {% for i in result['ID'] %}
-                <a class="flex justify-center text-blue-300 underline hover:text-white" href="{{i['url']}}">
+                <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
               </td>
@@ -282,10 +282,12 @@
     {% if result['email'] or result['phoneNumber']%}
     <h1 class="text-3xl font-medium ml-16 mt-16 mb-10">Contact info</h1>
     {% for i in result['email'] %}
-    <a class="border-4 border-amber-50 p-5 bg-stone-100 text-white text-center text-lg ml-24 mt-5 transition duration-300 ease-in-out hover:bg-stone-300">{{i['data']}}</a>
+    <a
+      class="border-4 border-amber-50 p-5 bg-stone-100 text-white text-center text-xl ml-24 mt-5 transition duration-300 ease-in-out hover:bg-stone-300">{{i['data']}}</a>
     {% endfor %}
     {% for i in result['phoneNumber'] %}
-    <a class="border-4 border-amber-50 p-5 bg-stone-100 text-white text-center text-lg ml-24 mt-5 transition duration-300 ease-in-out hover:bg-stone-300">{{i['data']}}</a>
+    <a
+      class="border-4 border-amber-50 p-5 bg-stone-100 text-white text-center text-xl ml-24 mt-5 transition duration-300 ease-in-out hover:bg-stone-300">{{i['data']}}</a>
     {% endfor %}
     {% endif %}
   </div>
@@ -306,23 +308,24 @@
     {% for i in result['picture'] %}
     {% set num = loop.index0 %}
     <div class="flex flex-row ml-20">
-      <div class="flex flex-col justify-center items-center bg-stone-100 m-10 ">
-        <img src="/static/images/pic{{loop.index0}}.jpg" class="p-5 w-80 h-60">
+      <div class="flex flex-col justify-center items-center bg-stone-100 border-8 border-amber-50 m-10 ">
+        <img src="/static/images/pic{{loop.index0}}.jpg" class="p-5 w-full h-80">
       </div>
       <div class="flex justify-center items-center p-5 mx-5">
         <img src="/static/assets/Right.png" class="w-32 h-24">
       </div>
 
-      <div class="flex flex-rows border-8 border-amber-50 m-5 bg-stone-50">
-      {% for j in range(0,3) %}
-      <div class="flex flex-row bg-stone-50 m-5">
-        <img src="/static/RevImage/pic{{num}}{{j}}.jpg" class="p-5 w-80 h-60">
+      <div class="flex flex-rows items-center m-10 bg-stone-50 border-8 border-amber-50">
+        {% for j in range(0,3) %}
+        <div class="flex flex-row bg-stone-50 m-5">
+          <img src="/static/RevImage/pic{{num}}{{j}}.jpg" class="p-5 w-full h-60">
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
-    </div>
     </div>
     {% endfor %}
 
+    
     <!-- maigret list website-->
     <div class="flex flex-col mt-16">
       <div class="flex flex-row p-5 mb-10 ml-16">
@@ -330,27 +333,31 @@
         <p class="text-3xl font-medium text-red-500">{{user}}&nbsp;</p>
         <p class="text-3xl font-medium">Account</p>
       </div>
+
       <!-- fix this -->
-      <div class="grid grid-cols-12 p-5 gap-14 ml-24 mr-24">
+      <div class="grid grid-cols-8 gap-y-14 ml-24 mr-24">
         {% for i in webList %}
-        <img src="/static/icon/{{i['img']}}" c title="{{i['sitename']}}">
+        <div class="flex justify-center">
+        <img class="w-32 h-32" src="/static/icon/{{i['img']}}" title="{{i['sitename']}}">
+      </div>
         {% set listName = i['name'] %}
         {% set listUrl = i['url'] %}
-        {% for j in  listName %}
-        <a class="w-24" href="{{listUrl[loop.index0]}}">
+        <div class="grid justify-start items-center">
+        {% for j in listName %}
+        <a class="w-min text-black hover:text-white underline text-xl border-4 border-stone-100 rounded-xl p-1 bg-amber-50" href="{{listUrl[loop.index0]}}">
           {{j}}
         </a>
-        
-        <br>
         {% endfor %}
+        </div>
         {% endfor %}
-      </div>
+        </div>
     </div>
 
 
+    <div class="flex flex-row mt-16">
     <!-- Risk level -->
-    <div class="flex flex-col mt-16">
-      <div class="flex flex-row p-5 mb-10 ml-16">
+    <div class="flex basis-1/2 flex-col w-screen">
+      <div class="flex p-5 ml-16">
         <p class="text-3xl font-medium">Risk Level:&nbsp;</p>
         <p class="text-3xl font-medium text-red-500">
           {% if level == 1 %}
@@ -370,31 +377,31 @@
       <div class="flex justify-center mt-5">
         {% if level==5%}
         <div class="flex justify-center items-center">
-          <img src="/static/vector/H2.png" class="w-5/12">
+          <img src="/static/vector/H2.png" class="w-3/4">
         </div>
         {% elif level==4%}
         <div class="flex justify-center items-center">
-          <img src="/static/vector/MH2.png" class="w-5/12">
+          <img src="/static/vector/MH2.png" class="w-3/4">
         </div>
         {% elif level==3%}
         <div class="flex justify-center items-center">
-          <img src="/static/vector/M2.png" class="w-5/12">
+          <img src="/static/vector/M2.png" class="w-3/4">
         </div>
         {% elif level==2%}
         <div class="flex justify-center items-center">
-          <img src="/static/vector/ML2.png" class="w-5/12">
+          <img src="/static/vector/ML2.png" class="w-3/4">
         </div>
         {% else %}
-        <div class="flex justify-center items-center ">
-          <img src="/static/vector/L2.png" class="w-5/12 border-8 border-amber-50">
+        <div class="flex justify-center items-center">
+          <img src="/static/vector/L2.png" class="w-3/4">
         </div>
         {% endif %}
       </div>
     </div>
 
     <!-- Suggestion follow by Risk level -->
-    <div class="flex flex-col mt-16">
-      <div class="flex flex-row p-5 mb-10 ml-16">
+    <div class="flex basis-1/2 flex-col w-screen">
+      <div class="flex flex-row p-5 mb-10">
         <p class="text-3xl font-medium">Suggestion:&nbsp;</p>
         <p class="text-3xl font-medium text-red-500">
           {% if level == 1 %}
@@ -411,11 +418,12 @@
         </p>
       </div>
 
-      <div class="flex ml-24">
+      <div class="flex">
         {% if level=="High"%}
         <div class="flex flex-col justify-center">
           <div class="text-2xl font-medium mb-5">
-            ● Sensitive Information that can be easily used to launch the Information leaked can cause high impact and damages to the users
+            ● Sensitive Information that can be easily used to launch the Information leaked can cause high impact and
+            damages to the users
           </div>
           <div class="flex flex-row mb-5">
             <div class="text-2xl font-medium">●&nbsp;</div>
@@ -429,7 +437,8 @@
         {% elif level=="Mediumhigh"%}
         <div class="flex flex-col justify-center">
           <div class="text-2xl font-medium mb-5">
-            ● Sensitive Information that can be easily used to launch the Information leaked can cause medium-high impact and damages to the users
+            ● Sensitive Information that can be easily used to launch the Information leaked can cause medium-high
+            impact and damages to the users
           </div>
           <div class="flex flex-row mb-5">
             <div class="text-2xl font-medium">●&nbsp;</div>
@@ -443,7 +452,8 @@
         {% elif level=="Medium"%}
         <div class="flex flex-col justify-center">
           <div class="text-2xl font-medium mb-5">
-            ● Sensitive Information that can be easily used to launch the Information leaked can cause medium impact and damages to the users
+            ● Sensitive Information that can be easily used to launch the Information leaked can cause medium impact and
+            damages to the users
           </div>
           <div class="flex flex-row mb-5">
             <div class="text-2xl font-medium">●&nbsp;</div>
@@ -457,7 +467,8 @@
         {% elif level=="Mediumlow"%}
         <div class="flex flex-col justify-center">
           <div class="text-2xl font-medium mb-5">
-            ● Sensitive Information that can be easily used to launch the Information leaked can cause medium-low impact and damages to the users
+            ● Sensitive Information that can be easily used to launch the Information leaked can cause medium-low impact
+            and damages to the users
           </div>
           <div class="flex flex-row mb-5">
             <div class="text-2xl font-medium">●&nbsp;</div>
@@ -472,7 +483,8 @@
         <!-- level=="Low"-->
         <div class="flex flex-col justify-center">
           <div class="text-2xl font-medium mb-5">
-            ● Sensitive Information that can be easily used to launch the Information leaked can cause low impact and damages to the users
+            ● Sensitive Information that can be easily used to launch the Information leaked can cause low impact and
+            damages to the users
           </div>
           <div class="flex flex-row mb-5">
             <div class="text-2xl font-medium">●&nbsp;</div>
@@ -486,6 +498,7 @@
         {% endif %}
       </div>
     </div>
+  </div>
 
   </div>
 </body>
