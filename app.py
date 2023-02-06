@@ -17,11 +17,11 @@ def index():
 
 @app.route("/result", methods=["POST","GET"])
 def search():
-    # output,listOfweb,username,names,risk= main(request.form['name_input'])
-    x= request.form['name_input']
-    output,listOfweb,username,names= test()
-    # return render_template("result.html",result=output,webList=listOfweb,user=username,name=names,level = risk)
-    return render_template("result.html",result=output,webList=listOfweb,user=username,name=names)
+    output,listOfweb,username,names,risk= main(request.form['name_input'])
+    # x= request.form['name_input']
+    # output,listOfweb,username,names= test()
+    return render_template("result.html",result=output,webList=listOfweb,user=username,name=names,level = risk)
+    # return render_template("result.html",result=output,webList=listOfweb,user=username,name=names)
 
 if __name__=="__main__":
     app.run(debug=True)             

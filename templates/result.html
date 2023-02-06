@@ -330,12 +330,19 @@
         <p class="text-3xl font-medium text-red-500">{{user}}&nbsp;</p>
         <p class="text-3xl font-medium">Account</p>
       </div>
+      <!-- fix this -->
       <div class="grid grid-cols-12 p-5 gap-14 ml-24 mr-24">
         {% for i in webList %}
-        <a class="w-24" href="{{i['url']}}">
-          <img src="/static/icon/{{i['img']}}" c title="{{i['sitename']}}">
+        <img src="/static/icon/{{i['img']}}" c title="{{i['sitename']}}">
+        {% set listName = i['name'] %}
+        {% set listUrl = i['url'] %}
+        {% for j in  listName %}
+        <a class="w-24" href="{{listUrl[loop.index0]}}">
+          {{j}}
         </a>
+        
         <br>
+        {% endfor %}
         {% endfor %}
       </div>
     </div>
