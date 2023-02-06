@@ -8,7 +8,8 @@ import os
 import requests
 import time
 import re
-def search_picture_link(URL :str):
+def search_picture_link(url :str):
+    url = url[url.rfind("https"):]
     curPath = os.getcwd()
     # chrome_options = Options()
     # chrome_options.add_argument("--headless")
@@ -20,7 +21,7 @@ def search_picture_link(URL :str):
     driver.find_element(By.CLASS_NAME, "nDcEnd").click()
     time.sleep(1)
     element = driver.find_element(By.CLASS_NAME, "cB9M7")
-    element.send_keys(URL)
+    element.send_keys(url)
     element.send_keys(Keys.RETURN)
     
     src = driver.page_source
@@ -40,16 +41,18 @@ def search_picture_link(URL :str):
             break
         count+=1
     
+    print(revImages)
     return revImages
     # pprint(link)
 
 def revImages(input :list):
-
+    
+    print(input)
     result = []
     for i in input:
         result.append(search_picture_link(i['data']))
 
-    # print(result)
+    print(result)
     for count,images in enumerate(result):
         
         for count1,image in enumerate(images):
@@ -69,10 +72,19 @@ def loadRevImage(num:int,numImg :int ,src:str):
 # revImages([{"data":"https://static-cdn.jtvnw.net/user-default-pictures-uv/13e5fa74-defa-11e9-809c-784f43822e80-profile_image-150x150.png"}])
 
 
-# revImages([{'data': 'https://scontent.fbkk28-1.fna.fbcdn.net/v/t39.30808-6/299835346_10222653853429438_238771487539892262_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=100&ccb=1-7&_nc_sid=85a577&efg=eyJpIjoidCJ9&_nc_ohc=awbjDUKkV1gAX-VawxL&tn=-DFwpzWxTywRKSgz&_nc_ht=scontent.fbkk28-1.fna&oh=00_AfDt6-GkMu0wBy5H7EesMAERLbrIZCavmIkz9yt67eYpzw&oe=63DCF325&manual_redirect=1',
+# revImages([{'data': 'https://scontent.fbkk28-1.fna.fbcdn.net/v/t39.30808-6/290501684_5219335674825610_671348912778975975_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=104&ccb=1-7&_nc_sid=85a577&efg=eyJpIjoidCJ9&_nc_ohc=wwQbyMhXm9QAX8ePY_W&_nc_ht=scontent.fbkk28-1.fna&oh=00_AfCq0r-N4aV5ckhtVVoxq3LZOFFOGs6h_xfe0KkpaTEamg&oe=63DDC228&manual_redirect=1',
 #               'tag': 'social network',
-#               'url': 'https://www.facebook.com/Songpon.te/about'},
-#              {'data': 'https://secure.gravatar.com/avatar/744cafe0ee73effe8284b5edaaacb668?s=80&d=identicon',
-#               'sitename': 'GitLab',
+#               'url': 'https://www.facebook.com/fubuki.tang/about'},
+#              {'data': 'https://static-cdn.jtvnw.net/user-default-pictures-uv/ebe4cd89-b4f4-4cd9-adac-2f30151b4209-profile_image-150x150.png',
+#               'sitename': 'Twitch',
+#               'tag': 'streaming',
+#               'url': 'https://www.twitch.tv/Tangkantapon'},
+#              {'data': 'https://avatars.githubusercontent.com/u/51602945?v=4',
+#               'sitename': 'GitHub',
 #               'tag': 'coding',
-#               'url': 'https://gitlab.com/teerakanok'}])
+#               'url': 'https://github.com/Tangkantapon'},
+#              {'data': 'flex: 0 0 '
+#                       '80px;https://cuad.ask.fm/assets2/154/971/066/880/normal/avatar.jpg',
+#               'sitename': 'AskFM',
+#               'tag': 'eg',
+#               'url': 'https://ask.fm/Tangkantapon'}])

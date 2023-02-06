@@ -13030,6 +13030,11 @@ video {
   border-color: rgba(127, 29, 29, var(--tw-border-opacity));
 }
 
+.border-amber-50 {
+  --tw-border-opacity: 1;
+  border-color: rgba(235, 204, 91, var(--tw-border-opacity));
+}
+
 .border-yellow-50 {
   --tw-border-opacity: 1;
   border-color: rgba(255, 251, 235, var(--tw-border-opacity));
@@ -15420,6 +15425,36 @@ video {
   background-color: rgba(127, 29, 29, var(--tw-bg-opacity));
 }
 
+.bg-amber-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(235, 204, 91, var(--tw-bg-opacity));
+}
+
+.bg-stone-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(50, 49, 49, var(--tw-bg-opacity));
+}
+
+.bg-stone-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(34, 34, 34, var(--tw-bg-opacity));
+}
+
+.bg-stone-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(168, 162, 158, var(--tw-bg-opacity));
+}
+
+.bg-stone-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(92, 92, 92, var(--tw-bg-opacity));
+}
+
+.bg-slate-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(203, 213, 225, var(--tw-bg-opacity));
+}
+
 .bg-yellow-50 {
   --tw-bg-opacity: 1;
   background-color: rgba(255, 251, 235, var(--tw-bg-opacity));
@@ -15836,6 +15871,21 @@ video {
 .group:hover .group-hover\:bg-red-900 {
   --tw-bg-opacity: 1;
   background-color: rgba(127, 29, 29, var(--tw-bg-opacity));
+}
+
+.group:hover .group-hover\:bg-stone-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(168, 162, 158, var(--tw-bg-opacity));
+}
+
+.group:hover .group-hover\:bg-stone-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(92, 92, 92, var(--tw-bg-opacity));
+}
+
+.group:hover .group-hover\:bg-slate-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(203, 213, 225, var(--tw-bg-opacity));
 }
 
 .group:hover .group-hover\:bg-yellow-50 {
@@ -16672,6 +16722,21 @@ video {
 .hover\:bg-red-900:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(127, 29, 29, var(--tw-bg-opacity));
+}
+
+.hover\:bg-stone-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(168, 162, 158, var(--tw-bg-opacity));
+}
+
+.hover\:bg-stone-300:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(92, 92, 92, var(--tw-bg-opacity));
+}
+
+.hover\:bg-slate-300:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(203, 213, 225, var(--tw-bg-opacity));
 }
 
 .hover\:bg-yellow-50:hover {
