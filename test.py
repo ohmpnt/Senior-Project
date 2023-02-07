@@ -41,8 +41,11 @@ import os
 
 
 
-i = ['a','b',"c"]
+# i = ['a','b',"c"]
 
+
+# import selenium
+# print(selenium.__version__)
 
 
 

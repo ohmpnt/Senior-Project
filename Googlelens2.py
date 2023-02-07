@@ -23,6 +23,7 @@ def search_picture_link(url :str):
     element = driver.find_element(By.CLASS_NAME, "cB9M7")
     element.send_keys(url)
     element.send_keys(Keys.RETURN)
+    time.sleep(3)
     
     src = driver.page_source
     soup = BeautifulSoup(src, 'html.parser')
@@ -69,7 +70,7 @@ def loadRevImage(num:int,numImg :int ,src:str):
         handler.write(img_data)
 
 
-# revImages([{"data":"https://static-cdn.jtvnw.net/user-default-pictures-uv/13e5fa74-defa-11e9-809c-784f43822e80-profile_image-150x150.png"}])
+# revImages([{"data":"https://scontent.fbkk2-6.fna.fbcdn.net/v/t39.30808-6/290501684_5219335674825610_671348912778975975_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=4TgaNVBJHsIAX9Gzmyh&_nc_ht=scontent.fbkk2-6.fna&oh=00_AfAx7BXzVXykonCbkqCYPJP_5NJBgHY04W2TAP_WtoaNDw&oe=63E7A568"}])
 
 
 # revImages([{'data': 'https://scontent.fbkk28-1.fna.fbcdn.net/v/t39.30808-6/290501684_5219335674825610_671348912778975975_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=104&ccb=1-7&_nc_sid=85a577&efg=eyJpIjoidCJ9&_nc_ohc=wwQbyMhXm9QAX8ePY_W&_nc_ht=scontent.fbkk28-1.fna&oh=00_AfCq0r-N4aV5ckhtVVoxq3LZOFFOGs6h_xfe0KkpaTEamg&oe=63DDC228&manual_redirect=1',

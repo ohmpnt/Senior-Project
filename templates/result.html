@@ -335,14 +335,14 @@
       </div>
 
       <!-- fix this -->
-      <div class="grid grid-cols-8 gap-y-14 ml-24 mr-24">
+      <div class="grid grid-cols-10 gap-y-14 ml-20 mr-20">
         {% for i in webList %}
-        <div class="flex justify-center">
+        <div class="flex justify-end">
         <img class="w-32 h-32" src="/static/icon/{{i['img']}}" title="{{i['sitename']}}">
       </div>
         {% set listName = i['name'] %}
         {% set listUrl = i['url'] %}
-        <div class="grid justify-start items-center">
+        <div class="grid justify-start items-center ml-5">
         {% for j in listName %}
         <a class="w-min text-black hover:text-white underline text-xl border-4 border-stone-100 rounded-xl p-1 bg-amber-50" href="{{listUrl[loop.index0]}}">
           {{j}}
