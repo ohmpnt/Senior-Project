@@ -214,12 +214,12 @@ def listWeb (input:list,name:str):
             listOfWeb.append({'sitename' : temp['sitename'], 
                             'url' : [temp['url_user']],
                             "img" : f"{sitename}.png",
-                            "name" : [f"@{name}"]})
+                            "name" : [f"{name}"]})
         else:
             listOfWeb.append({'sitename' : temp['sitename'], 
                             'url' : [temp['url_user']],
                             "img" : f"{firstLetter}.png",
-                            "name" : [f"@{name}"]})
+                            "name" : [f"{name}"]})
 
     return listOfWeb  
 

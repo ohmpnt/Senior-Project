@@ -47,8 +47,6 @@ def search_picture_link(url :str):
     # pprint(link)
 
 def revImages(input :list):
-    
-    print(input)
     result = []
     for i in input:
         result.append(search_picture_link(i['data']))
@@ -58,8 +56,6 @@ def revImages(input :list):
         
         for count1,image in enumerate(images):
             loadRevImage(count,count1,image)
-
-
 
 
 def loadRevImage(num:int,numImg :int ,src:str):

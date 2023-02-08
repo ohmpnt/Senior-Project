@@ -308,13 +308,14 @@
     {% for i in result['picture'] %}
     {% set num = loop.index0 %}
     <div class="flex flex-row ml-20">
-      <div class="flex flex-col justify-center items-center bg-stone-100 border-8 border-amber-50 m-10 ">
-        <img src="/static/images/pic{{loop.index0}}.jpg" class="p-5 w-full h-80">
+      <div class="flex flex-col justify-center items-center p-5">
+        <img src="/static/images/pic{{loop.index0}}.jpg" class="w-full h-80 object-cover rounded-3xl shadow-2xl shadow-black">
       </div>
       <div class="flex justify-center items-center p-5 mx-5">
-        <img src="/static/assets/Right.png" class="w-32 h-24">
+        <img src="/static/assets/Right2.png" class="w-32 h-28">
       </div>
 
+      <!-- OLD -->
       <div class="flex flex-rows items-center m-10 bg-stone-50 border-8 border-amber-50">
         {% for j in range(0,3) %}
         <div class="flex flex-row bg-stone-50 m-5">
@@ -322,6 +323,15 @@
         </div>
         {% endfor %}
       </div>
+
+
+
+      <!-- NEW -->
+      <!-- {% for i in webList %}
+      <div class="flex flex-row">
+        <img class="w-32 h-32" src="/static/revicon/" title="{{i['sitename']}}">
+      </div>
+      {% endfor %} -->
     </div>
     {% endfor %}
 
@@ -334,17 +344,17 @@
         <p class="text-3xl font-medium">Account</p>
       </div>
 
-      <!-- fix this -->
       <div class="grid grid-cols-10 gap-y-14 ml-20 mr-20">
         {% for i in webList %}
         <div class="flex justify-end">
         <img class="w-32 h-32" src="/static/icon/{{i['img']}}" title="{{i['sitename']}}">
-      </div>
+        </div>
         {% set listName = i['name'] %}
         {% set listUrl = i['url'] %}
-        <div class="grid justify-start items-center ml-5">
+        <div class="grid items-center ml-5 text-black hover:text-blue-300">
         {% for j in listName %}
-        <a class="w-min text-black hover:text-white underline text-xl border-4 border-stone-100 rounded-xl p-1 bg-amber-50" href="{{listUrl[loop.index0]}}">
+        <a class="flex  w-min  underline text-xl rounded-xl p-1 " href="{{listUrl[loop.index0]}}">
+          <p class="underline text-xl font-bold">@</p>
           {{j}}
         </a>
         {% endfor %}
