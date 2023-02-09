@@ -1,6 +1,6 @@
-
 import math
 from pprint import pprint
+
 def calculateRisk(input:dict) -> str :
     risk=[]
     datas = []
@@ -17,9 +17,6 @@ def calculateRisk(input:dict) -> str :
     average = math.floor(sum(risk)/len(risk))
     return average,sugg
 
-
-
-
 def findFifthHighest(risk:list, datas:list):
     result = []
     for i in range(0,5):
@@ -30,9 +27,6 @@ def findFifthHighest(risk:list, datas:list):
         
     return result
 
-
-
-
 def matrix(dmg:str,likelihood:str) ->int :
     # print(dmg,'=============',likelihood)
     lowDmg = ['gaming', 'music', 'art', 'dating', 'movies', 'hobby', 'sport','forum','porn','social network','streaming']
@@ -41,8 +35,6 @@ def matrix(dmg:str,likelihood:str) ->int :
     lowLikely = ['DOB','occupation','relationship','username','fName','lName','gender']
     medLikely = ['education','fullName','familyMember','name','workPlace']
     highLikely =['ID','address','email','phoneNumber','picture']
-
-
 
     if likelihood in lowLikely and dmg in lowDmg :
         return 1
@@ -70,7 +62,6 @@ def sugMain (input:list):
         result.append(suggestion(i))
     return result
 
-
 def suggestion(input :list):
     
     type1 = ['DOB','username','fName','fullName','lName','name','workPlace','occupation','education','familyMember','address']
@@ -78,7 +69,6 @@ def suggestion(input :list):
     type3 = ['gender','relationship']
     type4 = ['picture']
     
-
     if input[1] == 'DOB':
         word = 'date of birth'
     elif input[1] == 'username':
@@ -115,15 +105,24 @@ def suggestion(input :list):
         word = 'relationship'
 
     # result = f"there is information about your {word} on {input[3]} website"
+    # names = ['● Observe on your account and may consider changing the privacy settings', f'● Be careful when filling in {word} information in unreliable sources']
+    # nl = '\n'
+    # text = f"Winners are:{nl}{nl.join(names)}"
 
     if input[1] in type1:
-        detail = f'● Observe on your account and may consider changing the privacy settings\n ● Be careful when filling in {word} information in unreliable sources'
+        names = ['● Observe on your account and may consider changing the privacy settings', f'● Be careful when filling in {word} information in unreliable sources']
+        nl = '\n'
+        detail = f"{nl}{nl.join(names)}"
     elif input[1] in type2:
-        detail = f'● Observe on your account and may consider changing the privacy settings\n ● Be careful when filling in {word} information in unreliable sources\n ● Enable for two-factor authentication'
+        names = ['● Observe on your account and may consider changing the privacy settings', f'● Be careful when filling in {word} information in unreliable sources', f'● Enable for two-factor authentication']
+        nl = '\n'
+        detail = f"{nl}{nl.join(names)}"
     elif input[1] in type3:
         detail = '● Observe on your account and may consider changing the privacy settings'
     elif input[1] in type4:
-        detail = f'● Observe on your account and may consider changing the privacy settings\n ● Be careful when uploading a {word}  in unreliable sources'
+        names = ['● Observe on your account and may consider changing the privacy settings', f'● Be careful when uploading a {word} in unreliable sources']
+        nl = '\n'
+        detail =  f"{nl}{nl.join(names)}"
 
     out = [word,input[3],detail,input[2]]
 

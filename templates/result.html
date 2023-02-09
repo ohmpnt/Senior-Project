@@ -292,7 +292,7 @@
     {% endif %}
   </div>
 
-  <!-- facebook pic and maigret / ++google lens  image-->
+  <!-- Reverse image-->
   <div class="flex flex-col mt-16">
     <div class="flex flex-row">
       <div class="flex flex-row mb-10 ml-16 ">
@@ -319,23 +319,23 @@
 
 
       <!-- lastest -->
-      <div class="flex flex-rows items-center m-10 bg-stone-50 border-8 border-amber-50">
+      <div class="flex flex-rows items-center">
 
-        <a class="flex flex-row bg-stone-50 m-5" href="{{temp[0]}}">
-          <img src="/static/revicon/GoogleLens.png" class="p-5 w-full h-60">
+        <a class="flex flex-row m-10" href="{{temp[0]}}">
+          <img src="/static/revicon/GoogleLens.png" class="w-full h-48 shadow-2xl shadow-black rounded-3xl"
+            title="GoogleLens">
         </a>
-        <a class="flex flex-row bg-stone-50 m-5" href="{{temp[1]}}">
-          <img src="/static/revicon/Bing.png" class="p-5 w-full h-60">
+        <a class="flex flex-row m-10" href="{{temp[1]}}">
+          <img src="/static/revicon/Bing.png" class="w-full h-48 shadow-2xl shadow-black rounded-3xl"
+            title="Microsoft Bing">
         </a>
-        <a class="flex flex-row bg-stone-50 m-5" href="{{temp[2]}}">
-          <img src="/static/revicon/Yandex.png" class="p-5 w-full h-60">
+        <a class="flex flex-row m-10" href="{{temp[2]}}">
+          <img src="/static/revicon/Yandex.png" class="w-full h-48 shadow-2xl shadow-black rounded-3xl" title="Yandex">
         </a>
-        <a class="flex flex-row bg-stone-50 m-5" href="{{temp[3]}}">
-          <img src="/static/revicon/Tineye.png" class="p-5 w-full h-60">
+        <a class="flex flex-row m-10" href="{{temp[3]}}">
+          <img src="/static/revicon/Tineye.png" class="w-full h-48 shadow-2xl shadow-black rounded-3xl" title="Tineye">
         </a>
       </div>
-
-
       <!-- OLD -->
       <!-- <div class="flex flex-rows items-center m-10 bg-stone-50 border-8 border-amber-50">
         {% for j in range(0,3) %}
@@ -344,15 +344,6 @@
         </div>
         {% endfor %}
       </div> -->
-
-
-
-      <!-- NEW -->
-      <!-- {% for i in webList %}
-      <div class="flex flex-row">
-        <img class="w-32 h-32" src="/static/revicon/" title="{{i['sitename']}}">
-      </div>
-      {% endfor %} -->
     </div>
     {% endfor %}
 
@@ -524,10 +515,10 @@
               <div class="text-2xl font-medium">●&nbsp;</div>
               {% for i in suggestion %}
               <div class="text-2xl font-medium">
-                
+
                 there is information about your {{i[0]}} on <a href="{{i[3]}}">{{i[1]}}</a> website.
                 {{i[2]}}
-                
+
               </div>
               {% endfor %}
             </div>
@@ -543,14 +534,16 @@
               <div class="text-2xl font-medium">●&nbsp;</div>
               <div class="text-2xl font-medium underline">Suggestion:</div>
             </div>
-            <div class="flex flex-row ml-5">
-              <div class="text-2xl font-medium">●&nbsp;</div>
+            <div class="grid ml-5 bg-green-400 p-5">
+              <!-- <div class="text-2xl font-medium">●&nbsp;</div> -->
               {% for i in suggestion %}
-              <div class="text-2xl font-medium">
-                
-                there is information about your {{i[0]}} on <a href="{{i[3]}}">{{i[1]}}</a> website.
+              <div class="flex flex-row text-2xl font-medium bg-blue-400">
+                ● There is an information about your {{i[0]}} locate on &nbsp;
+                <a href="{{i[3]}}" class="text-red-500">{{i[1]}} &nbsp;</a>
+                website.
+              </div>
+              <div class="grid text-2xl font-medium ml-5">
                 {{i[2]}}
-                
               </div>
               {% endfor %}
             </div>
