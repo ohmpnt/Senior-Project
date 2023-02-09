@@ -542,9 +542,11 @@
                 <a href="{{i[3]}}" class="text-red-500">{{i[1]}} &nbsp;</a>
                 website.
               </div>
+              {%for j in i[2]%}
               <div class="grid text-2xl font-medium ml-5">
-                {{i[2]}}
+                {{j}}<br>
               </div>
+              {% endfor %}
               {% endfor %}
             </div>
           </div>

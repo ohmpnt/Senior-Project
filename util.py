@@ -260,33 +260,28 @@ def test():
 
     sug = [['photo',
   'GitHub',
-  '\n'
-  '● Observe on your account and may consider changing the privacy settings\n'
-  '● Be careful when uploading a photo in unreliable sources',
+  ['● Observe on your account and may consider changing the privacy settings',
+   '● Be careful when uploading a photo in unreliable sources'],
   'https://github.com/Tangkantapon'],
  ['address',
   'Facebook',
-  '\n'
-  '● Observe on your account and may consider changing the privacy settings\n'
-  '● Be careful when filling in address information in unreliable sources',
+  ['● Observe on your account and may consider changing the privacy settings',
+   '● Be careful when filling in address information in unreliable sources'],
   'https://www.facebook.com/fubuki.tang/about'],
  ['full name',
   'GitHub',
-  '\n'
-  '● Observe on your account and may consider changing the privacy settings\n'
-  '● Be careful when filling in full name information in unreliable sources',
+  ['● Observe on your account and may consider changing the privacy settings',
+   '● Be careful when filling in full name information in unreliable sources'],
   'https://github.com/Tangkantapon'],
  ['photo',
   'Facebook',
-  '\n'
-  '● Observe on your account and may consider changing the privacy settings\n'
-  '● Be careful when uploading a photo in unreliable sources',
+  ['● Observe on your account and may consider changing the privacy settings',
+   '● Be careful when uploading a photo in unreliable sources'],
   'https://www.facebook.com/fubuki.tang/about'],
  ['photo',
   'Twitch',
-  '\n'
-  '● Observe on your account and may consider changing the privacy settings\n'
-  '● Be careful when uploading a photo in unreliable sources',
+  ['● Observe on your account and may consider changing the privacy settings',
+   '● Be careful when uploading a photo in unreliable sources'],
   'https://www.twitch.tv/Tangkantapon']]
     revLink = [['https://lens.google.com/uploadbyurl?url=https%3A%2F%2Fscontent.fbkk28-1.fna.fbcdn.net%2Fv%2Ft39.30808-6%2F290501684_5219335674825610_671348912778975975_n.jpg%3Fstp%3Dcp0_dst-jpg_e15_fr_q65%26_nc_cat%3D104%26ccb%3D1-7%26_nc_sid%3D85a577%26efg%3DeyJpIjoidCJ9%26_nc_ohc%3DDQVM3C4CUaIAX_gsdS1%26_nc_ht%3Dscontent.fbkk28-1.fna%26oh%3D00_AfAsd0d4H_tQUe6iK9DQyhrcvxad7RuK9VCF-FURv608OQ%26oe%3D63E99FA8%26manual_redirect%3D1', 
                 'https://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=https%3A%2F%2Fscontent.fbkk28-1.fna.fbcdn.net%2Fv%2Ft39.30808-6%2F290501684_5219335674825610_671348912778975975_n.jpg%3Fstp%3Dcp0_dst-jpg_e15_fr_q65%26_nc_cat%3D104%26ccb%3D1-7%26_nc_sid%3D85a577%26efg%3DeyJpIjoidCJ9%26_nc_ohc%3DDQVM3C4CUaIAX_gsdS1%26_nc_ht%3Dscontent.fbkk28-1.fna%26oh%3D00_AfAsd0d4H_tQUe6iK9DQyhrcvxad7RuK9VCF-FURv608OQ%26oe%3D63E99FA8%26manual_redirect%3D1', 

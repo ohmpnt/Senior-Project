@@ -110,19 +110,14 @@ def suggestion(input :list):
     # text = f"Winners are:{nl}{nl.join(names)}"
 
     if input[1] in type1:
-        names = ['● Observe on your account and may consider changing the privacy settings', f'● Be careful when filling in {word} information in unreliable sources']
-        nl = '\n'
-        detail = f"{nl}{nl.join(names)}"
+        detail = ['● Observe on your account and may consider changing the privacy settings', f'● Be careful when filling in {word} information in unreliable sources']
     elif input[1] in type2:
-        names = ['● Observe on your account and may consider changing the privacy settings', f'● Be careful when filling in {word} information in unreliable sources', f'● Enable for two-factor authentication']
-        nl = '\n'
-        detail = f"{nl}{nl.join(names)}"
+        detail = ['● Observe on your account and may consider changing the privacy settings', f'● Be careful when filling in {word} information in unreliable sources', f'● Enable for two-factor authentication']
     elif input[1] in type3:
-        detail = '● Observe on your account and may consider changing the privacy settings'
+        detail = ['● Observe on your account and may consider changing the privacy settings']
     elif input[1] in type4:
-        names = ['● Observe on your account and may consider changing the privacy settings', f'● Be careful when uploading a {word} in unreliable sources']
-        nl = '\n'
-        detail =  f"{nl}{nl.join(names)}"
+        detail = ['● Observe on your account and may consider changing the privacy settings', f'● Be careful when uploading a {word} in unreliable sources']
+        
 
     out = [word,input[3],detail,input[2]]
 
