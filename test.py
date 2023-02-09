@@ -48,5 +48,9 @@ import os
 # print(selenium.__version__)
 
 
+data = []
 
+for i in range(0,100):
+    data.append(i)
 
+print(data)
