@@ -12,9 +12,9 @@ def calculateRisk(input:dict) -> str :
                 risk.append(temp)
                 datas.append([i['tag'],key,i['url'],i['sitename']])
 
+    average = math.floor(sum(risk)/len(risk))
     listHigh = findFifthHighest(risk,datas)
     sugg = sugMain(listHigh)
-    average = math.floor(sum(risk)/len(risk))
     return average,sugg
 
 def findFifthHighest(risk:list, datas:list):
@@ -123,67 +123,41 @@ def suggestion(input :list):
 
     return out
 
-# x = {'DOB': [],
-#  'ID': [],
-#  'address': [{'data': '',
-#               'tag': 'social network',
-#               'url': 'https://www.facebook.com/fubuki.tang/about',
-#               'sitename': 'Facebook'}],
-#  'education': [],
-#  'email': [],
-#  'fName': [],
-#  'familyMember': [],
-#  'fullName': [{'data': '',
-#                'tag': 'social network',
-#                'url': 'https://www.facebook.com/fubuki.tang/about',
-#               'sitename': 'Facebook'},
-#               {'data': 'tangkantapon',
-#                'sitename': 'Twitch',
-#                'tag': 'streaming',
-#                'url': 'https://www.twitch.tv/Tangkantapon'},
-#               {'data': 'Kantapon Srigadphach',
-#                'sitename': 'GitHub',
-#                'tag': 'coding',
-#                'url': 'https://github.com/Tangkantapon'}],
-#  'gender': [{'data': '',
-#              'tag': 'social network',
-#              'url': 'https://www.facebook.com/fubuki.tang/about',
-#               'sitename': 'Facebook'}],
-#  'lName': [],
-#  'name': [],
-#  'occupation': [],
-#  'phoneNumber': [],
-#  'picture': [{'data': 'https://scontent.fbkk28-1.fna.fbcdn.net/v/t39.30808-6/290501684_5219335674825610_671348912778975975_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=104&ccb=1-7&_nc_sid=85a577&efg=eyJpIjoidCJ9&_nc_ohc=wwQbyMhXm9QAX8ePY_W&_nc_ht=scontent.fbkk28-1.fna&oh=00_AfCq0r-N4aV5ckhtVVoxq3LZOFFOGs6h_xfe0KkpaTEamg&oe=63DDC228&manual_redirect=1',
-#               'tag': 'social network',
-#               'url': 'https://www.facebook.com/fubuki.tang/about',
-#               'sitename': 'Facebook'},
-#              {'data': 'https://static-cdn.jtvnw.net/user-default-pictures-uv/ebe4cd89-b4f4-4cd9-adac-2f30151b4209-profile_image-150x150.png',
-#               'sitename': 'Twitch',
-#               'tag': 'streaming',
-#               'url': 'https://www.twitch.tv/Tangkantapon'},
-#              {'data': 'https://avatars.githubusercontent.com/u/51602945?v=4',
-#               'sitename': 'GitHub',
-#               'tag': 'coding',
-#               'url': 'https://github.com/Tangkantapon'},
-#              {'data': 'flex: 0 0 '
-#                       '80px;https://cuad.ask.fm/assets2/154/971/066/880/normal/avatar.jpg',
-#               'sitename': 'AskFM',
-#               'tag': 'eg',
-#               'url': 'https://ask.fm/Tangkantapon'}],
-#  'relationship': [{'data': '',
-#                    'tag': 'social network',
-#                    'url': 'https://www.facebook.com/fubuki.tang/about',
-#               'sitename': 'Facebook'}],
-#  'username': [{'data': '',
-#                'tag': 'social network',
-#                'url': 'https://www.facebook.com/fubuki.tang/about',
-#               'sitename': 'Facebook'},
-#               {'data': 'tangkantapon',
-#                'sitename': 'Twitch',
-#                'tag': 'streaming',
-#                'url': 'https://www.twitch.tv/Tangkantapon'}],
-#  'workPlace': []}
+x = {'DOB': [],
+ 'ID': [],
+ 'address': [{'data': '',
+              'sitename': 'facebook',
+              'tag': 'social network',
+              'url': 'https://www.facebook.com/Songpon.te/about'}],
+ 'education': [],
+ 'email': [{'data': '*ct@mahidol.ac.th (not breach)',
+            'tag': 'unknow',
+            'url': 'https://www.ict.mahidol.ac.th/people/staff-contact/songpon-teerakanok/'}],
+ 'fName': [],
+ 'familyMember': [],
+ 'fullName': [{'data': '',
+               'sitename': 'facebook',
+               'tag': 'social network',
+               'url': 'https://www.facebook.com/Songpon.te/about'}],
+ 'gender': [{'data': '',
+             'sitename': 'facebook',
+             'tag': 'social network',
+             'url': 'https://www.facebook.com/Songpon.te/about'}],
+ 'lName': [],
+ 'name': [],
+ 'occupation': [],
+ 'phoneNumber': [],
+ 'picture': [{'data': 'https://scontent.fbkk28-1.fna.fbcdn.net/v/t39.30808-6/299835346_10222653853429438_238771487539892262_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=100&ccb=1-7&_nc_sid=85a577&efg=eyJpIjoidCJ9&_nc_ohc=4iLHzfixDOIAX_MCFtw&_nc_ht=scontent.fbkk28-1.fna&oh=00_AfCvjmVQwJ4dwdzSJCMMKd52u3TARFEJsh0j5pZPgPbO_w&oe=63EACAE5&manual_redirect=1',
+              'sitename': 'facebook',
+              'tag': 'social network',
+              'url': 'https://www.facebook.com/Songpon.te/about'}],
+ 'relationship': [],
+ 'username': [],
+ 'workPlace': [{'data': '',
+                'sitename': 'facebook',
+                'tag': 'social network',
+                'url': 'https://www.facebook.com/Songpon.te/about'}]}
  
-# risk,sugg =calculateRisk(x)
+risk,sugg =calculateRisk(x)
 
-# pprint(sugg)
+pprint(sugg)

@@ -303,4 +303,4 @@ def removeSymbol (input:list):
 #     return x,y,'Tang kantapon','Tang',1,revLink,sug
 
 
-# main("Tang kantapon")
+main("Tang kantapon")
