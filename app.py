@@ -11,8 +11,10 @@ def index():
 
 @app.route("/result", methods=["POST","GET"])
 def search():
+    # main
     output,listOfweb,username,names,risk,revLink,suggestions= main(request.form['name_input'])
-    # x= request.form['name_input']
+
+    # test
     # output,listOfweb,username,names,risk,revLink,suggestions= test()
     return render_template("result.html",result = output,webList = listOfweb,user = username,name = names,level = risk,revLinks = revLink,suggestion = suggestions)
 
