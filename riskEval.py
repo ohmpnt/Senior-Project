@@ -11,26 +11,41 @@ def calculateRisk(input:dict) -> str :
             if temp != None:
                 risk.append(temp)
                 datas.append([i['tag'],key,i['url'],i['sitename']])
-
-    average = math.floor(sum(risk)/len(risk))
-    listHigh = findFifthHighest(risk,datas)
-    sugg = sugMain(listHigh)
+    if len(risk) >0:
+        average = math.floor(sum(risk)/len(risk))
+        listHigh = findFifthHighest(risk,datas)
+        sugg = sugMain(listHigh)
+    else:
+        average=1
+        sugg = [['full name',
+                'facebook',
+                ['● Observe on your account and may consider changing the privacy settings',
+                '● Be careful when filling in full name information in unreliable sources'],
+                'https://www.facebook.com/135221053181397/about'],
+                ['date of birth',
+                'facebook',
+                ['● Observe on your account and may consider changing the privacy settings',
+                '● Be careful when filling in date of birth information in unreliable '
+                'sources'],
+                'https://www.facebook.com/135221053181397/about']]
     return average,sugg
 
 def findFifthHighest(risk:list, datas:list):
+    print(risk,datas)
     result = []
     for i in range(0,5):
-    
-        indexAt = risk.index(max(risk))
-        result.append(datas.pop(indexAt))
-        risk.pop(indexAt)
-        
+        try:
+            indexAt = risk.index(max(risk))
+            result.append(datas.pop(indexAt))
+            risk.pop(indexAt)
+        except:
+            break
     return result
 
 def matrix(dmg:str,likelihood:str) ->int :
     # print(dmg,'=============',likelihood)
     lowDmg = ['gaming', 'music', 'art', 'dating', 'movies', 'hobby', 'sport','forum','porn','social network','streaming']
-    medDmg =['coding', 'news', 'blog', 'shopping', 'stock','education','career']
+    medDmg =['coding', 'news', 'blog', 'shopping', 'stock','education','career','unknow']
     highDmg =['trading', 'photo', 'finance','business','medicine']
     lowLikely = ['DOB','occupation','relationship','username','fName','lName','gender']
     medLikely = ['education','fullName','familyMember','name','workPlace']
@@ -123,40 +138,80 @@ def suggestion(input :list):
 
     return out
 
-# x = {'DOB': [],
+# x = {'DOB': [{'data': '',
+#           'sitename': 'facebook',
+#           'tag': 'social network',
+#           'url': 'https://www.facebook.com/135221053181397/about'}],
 #  'ID': [],
-#  'address': [{'data': '',
-#               'sitename': 'facebook',
-#               'tag': 'social network',
-#               'url': 'https://www.facebook.com/Songpon.te/about'}],
+#  'address': [],
 #  'education': [],
-#  'email': [{'data': '*ct@mahidol.ac.th (not breach)',
-#             'tag': 'unknow',
-#             'url': 'https://www.ict.mahidol.ac.th/people/staff-contact/songpon-teerakanok/'}],
+#  'email': [],
 #  'fName': [],
 #  'familyMember': [],
 #  'fullName': [{'data': '',
 #                'sitename': 'facebook',
 #                'tag': 'social network',
-#                'url': 'https://www.facebook.com/Songpon.te/about'}],
-#  'gender': [{'data': '',
-#              'sitename': 'facebook',
-#              'tag': 'social network',
-#              'url': 'https://www.facebook.com/Songpon.te/about'}],
+#                'url': 'https://www.facebook.com/135221053181397/about'}],
+#  'gender': [],
 #  'lName': [],
 #  'name': [],
 #  'occupation': [],
 #  'phoneNumber': [],
-#  'picture': [{'data': 'https://scontent.fbkk28-1.fna.fbcdn.net/v/t39.30808-6/299835346_10222653853429438_238771487539892262_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=100&ccb=1-7&_nc_sid=85a577&efg=eyJpIjoidCJ9&_nc_ohc=4iLHzfixDOIAX_MCFtw&_nc_ht=scontent.fbkk28-1.fna&oh=00_AfCvjmVQwJ4dwdzSJCMMKd52u3TARFEJsh0j5pZPgPbO_w&oe=63EACAE5&manual_redirect=1',
-#               'sitename': 'facebook',
-#               'tag': 'social network',
-#               'url': 'https://www.facebook.com/Songpon.te/about'}],
+#  'picture': [],
 #  'relationship': [],
 #  'username': [],
-#  'workPlace': [{'data': '',
-#                 'sitename': 'facebook',
-#                 'tag': 'social network',
-#                 'url': 'https://www.facebook.com/Songpon.te/about'}]}
+#  'workPlace': []}
+# {'DOB': [{'data': '',
+#           'sitename': 'facebook',
+#           'tag': 'social network',
+#           'url': 'https://www.facebook.com/135221053181397/about'}],
+#  'ID': [],
+#  'address': [],
+#  'education': [],
+#  'email': [],
+#  'fName': [],
+#  'familyMember': [],
+#  'fullName': [{'data': '',
+#                'sitename': 'facebook',
+#                'tag': 'social network',
+#                'url': 'https://www.facebook.com/135221053181397/about'}],
+#  'gender': [],
+#  'lName': [],
+#  'name': [],
+#  'occupation': [],
+#  'phoneNumber': [],
+#  'picture': [],
+#  'relationship': [],
+#  'username': [],
+#  'workPlace': []}
+# [{'img': 'Pinterest.png',
+#   'name': ['SudsanguanNgamsuriyaroj'],
+#   'sitename': 'Pinterest',
+#   'url': ['https://www.pinterest.com/SudsanguanNgamsuriyaroj/']},
+#  {'img': 'A.png',
+#   'name': ['SudsanguanNgamsuriyaroj'],
+#   'sitename': 'Academia.edu',
+#   'url': ['https://independent.academia.edu/SudsanguanNgamsuriyaroj']},
+#  {'img': 'S.png',
+#   'name': ['SudsanguanNgamsuriyaroj'],
+#   'sitename': 'Strava',
+#   'url': ['https://www.strava.com/athletes/SudsanguanNgamsuriyaroj']},
+#  {'img': 'P.png',
+#   'name': ['SudsanguanNgamsuriyaroj'],
+#   'sitename': 'Picuki',
+#   'url': ['https://www.picuki.com/profile/SudsanguanNgamsuriyaroj']},
+#  {'img': 'P.png',
+#   'name': ['SudsanguanNgamsuriyaroj'],
+#   'sitename': 'Pixwox',
+#   'url': ['https://www.pixwox.com/profile/SudsanguanNgamsuriyaroj/']},
+#  {'img': 'D.png',
+#   'name': ['SudsanguanNgamsuriyaroj'],
+#   'sitename': 'DonationsAlerts',
+#   'url': ['https://www.donationalerts.com/r/SudsanguanNgamsuriyaroj']},
+#  {'img': 'D.png',
+#   'name': ['SudsanguanNgamsuriyaroj'],
+#   'sitename': 'Dumpor',
+#   'url': ['https://dumpor.com/v/SudsanguanNgamsuriyaroj']}]
  
 # risk,sugg =calculateRisk(x)
 

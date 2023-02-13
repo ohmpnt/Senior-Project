@@ -30,23 +30,29 @@ def googleScrape (input:str):
             iden = delSymbol(iden)
             for i in email:
                 if email:
+                    match = re.search(r'[\w.+-]+@[\w-]+\.[\w.-]+', i)
                     output["email"].append({
+                                    "sitename" :'unknow',
                                     "url" : link,
-                                    "data":  i,
+                                    "data":  str(match.group(0)),
                                     "tag" : "unknow"
                                     }) 
             for i in phoneNumber:
                 if phoneNumber:
+                    match = re.search(r'0\d\d[\s-]\d\d\d[\s-]\d\d\d\d', i)
                     output["phoneNumber"].append({
+                                    "sitename" :'unknow',
                                     "url" : link,
-                                    "data":  phoneNumber ,
+                                    "data":  str(match.group(0)) ,
                                     "tag" : "unknow"
                                     }) 
             for i in iden:
                 if iden:
+                    match = re.search(r'\d[\s-]\d\d\d\d[\s-]\d\d\d\d\d[\s-]\d\d[\s-]\d', i)
                     output["ID"].append({
+                                    "sitename" :'unknow',
                                     "url" : link,
-                                    "data":  iden ,
+                                    "data":  str(match.group(0)) ,
                                     "tag" : "unknow"
                                     }) 
         except:

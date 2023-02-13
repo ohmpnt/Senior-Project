@@ -42,7 +42,7 @@ def main(x:str)->list:
     # merge all the result together
     output = merge(outputfb,outputG)
     finalOut = merge(output,outMaigrate)
-
+    pprint(finalOut)
     # check if email are breach?
     finalOut['email'] = infoga(finalOut['email'])
     # mask contact information
@@ -303,4 +303,13 @@ def removeSymbol (input:list):
 #     return x,y,'Tang kantapon','Tang',1,revLink,sug
 
 
-# main("Tang kantapon")
+# main("Dolvara Guna-Tilaka")
+
+# out = maskData([{'data': 'sudsanguan.nga@mahidol.ac.th',
+#             'tag': 'unknow',
+#             'url': 'https://graduate.mahidol.ac.th/engine/structure/content/curriculum/info_prof.php?id=471726'},
+#            {'data': 'den.tup@mahidol.ac.thหร',
+#             'tag': 'unknow',
+#             'url': 'https://www.facebook.com/ict.mahidol.university/posts/%E0%B8%84%E0%B8%93%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%84%E0%B9%82%E0%B8%99%E0%B9%82%E0%B8%A5%E0%B8%A2%E0%B8%B5%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%99%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%AA%E0%B8%B2%E0%B8%A3-ict-%E0%B8%A1%E0%B8%A1%E0%B8%AB%E0%B8%B4%E0%B8%94%E0%B8%A5-%E0%B8%82%E0%B8%AD%E0%B9%81%E0%B8%AA%E0%B8%94%E0%B8%87%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A2%E0%B8%B4%E0%B8%99%E0%B8%94%E0%B8%B5%E0%B8%81%E0%B8%B1%E0%B8%9A-%E0%B8%A3%E0%B8%A8-%E0%B8%94%E0%B8%A3%E0%B8%AA%E0%B8%B8%E0%B8%94%E0%B8%AA%E0%B8%87%E0%B8%A7%E0%B8%99-%E0%B8%87%E0%B8%B2%E0%B8%A1/10156814210292275/'}])
+
+# pprint(out)

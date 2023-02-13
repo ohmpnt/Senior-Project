@@ -7,8 +7,8 @@ def infoga(input:str):
     for count,info in enumerate(input) :
         s = info['data']
         curPath = os.getcwd()
-        os.system(f'python "{curPath}\infoga\infoga.py" --info {s} --breach -v 3 --report reports/infogaOutput.txt')
         try : 
+            os.system(f'python "{curPath}\infoga\infoga.py" --info {s} --breach -v 3 --report reports/infogaOutput.txt')
             file = open('reports/infogaOutput.txt')
             data = file.read()
             file.close()
@@ -18,8 +18,8 @@ def infoga(input:str):
                 info['data'] = s+' (breach)'
             input[count]= info     
         except:
-            continue
+            print('invalid email')
     return input
 
 
-# infoga([{'data' :'ohmsnow@gmail.com'}])
+# infoga([{'data' :'สอบถามข้อมูลเพิ่มเติมติดต่อคุณเด่น095-437-7275Email:den.tup@mahidol.ac.thหรือคุณสารัชย์092-256-1570Email:sarachaya.chi@mahidol.ac.th'}])
