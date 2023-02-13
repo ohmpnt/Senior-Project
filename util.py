@@ -257,7 +257,7 @@ def removeSymbol (input:list):
 #   'name': ['tangkantapon'],
 #   'sitename': 'giters.com',
 #   'url': ['https://giters.com/tangkantapon']}]
-
+#     sug = []
 #     sug = [['photo',
 #   'GitHub',
 #   ['● Observe on your account and may consider changing the privacy settings',

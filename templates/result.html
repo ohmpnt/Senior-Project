@@ -293,18 +293,8 @@
   </div>
 
   <!-- Reverse image-->
+  {% if result['picture'] != [] %}
   <div class="flex flex-col mt-16">
-    <!-- <div class="flex flex-row bg-red-400 items-center ">
-      <div class="flex flex-row">
-        <p class="text-3xl font-medium">Here are some pictures of&nbsp;</p>
-        <p class="text-3xl font-medium text-red-500">{{name}}</p>
-      </div>
-    
-      <div class="flex flex-row ">
-        <p class="text-3xl font-medium">Related pictures of&nbsp;</p>
-        <p class="text-3xl font-medium text-red-500">{{name}}</p>
-      </div>
-    </div> -->
     <div class="grid grid-cols-3 ml-16">
 
       <div class="">
@@ -352,16 +342,9 @@
           <img src="/static/revicon/Tineye.png" class="w-full h-48 shadow-2xl shadow-black rounded-3xl" title="Tineye">
         </a>
       </div>
-      <!-- OLD -->
-      <!-- <div class="flex flex-rows items-center m-10 bg-stone-50 border-8 border-amber-50">
-        {% for j in range(0,3) %}
-        <div class="flex flex-row bg-stone-50 m-5">
-          <img src="/static/RevImage/pic{{num}}{{j}}.jpg" class="p-5 w-full h-60">
-        </div>
-        {% endfor %}
-      </div> -->
     </div>
     {% endfor %}
+    {% endif %}
 
 
     <!-- maigret list website-->
@@ -441,7 +424,7 @@
 
       <!-- Suggestion follow by Risk level -->
       <div class="flex basis-1/2 flex-col w-screen">
-        <div class="flex flex-row mb-5">
+        <div class="flex flex-row mb-5 p-5">
           <p class="text-3xl font-medium">Suggestion:&nbsp;</p>
           <p class="text-3xl font-medium text-red-500">
             {% if level == 1 %}
@@ -457,7 +440,7 @@
             {% endif %}
           </p>
         </div>
-
+        {% if suggestion != [] %}
         <div class="flex ml-10">
 
           {% if level== 5 %}
@@ -526,40 +509,6 @@
           </div>
 
           {% elif level==4%}
-          <!-- <div class="flex flex-col justify-center">
-            <div class="text-2xl font-medium mb-5">
-              ● Sensitive Information that can be easily used to launch the Information leaked<br> 
-              &nbsp;&nbsp; can cause significant impact and damages to the users
-            </div>
-            <div class="flex flex-row mb-5">
-              <div class="text-2xl font-medium">●&nbsp;</div>
-              <div class="text-2xl font-medium underline">Suggestion:</div>
-            </div>
-            <div class="flex flex-col ml-5">
-              <div class="text-2xl font-medium">●&nbsp;</div>
-              {% for i in suggestion %}
-              <div class="grid ml-5 gap-3">
-                {% for i in suggestion %}
-                <div class="flex flex-row text-2xl font-medium">
-                  <div class="flex flex-row">
-                    <div class="ml-1">● There is an information about your</div>
-                    <div class="text-red-500 ml-1">{{i[0]}}</div>
-                    <div class="ml-1">locate on</div>
-                  </div>
-                  <a href="{{i[3]}}" class="text-blue-600 hover:text-blue-900 underline ml-1 mr-1">{{i[1]}}</a>
-                  website.
-                </div>
-                {%for j in i[2]%}
-                <div class="grid text-2xl font-medium ml-5 items-center">
-                  {{j}}
-                  <br>
-                </div>
-                {% endfor %}
-                {% endfor %}
-              </div>
-              {% endfor %}
-            </div>
-          </div> -->
           <div class="flex flex-col justify-center mb-10">
             <div class="text-2xl font-medium mb-5">
               ● Sensitive Information that can be easily used to launch the Information leaked<br> 
@@ -591,40 +540,6 @@
           </div>
 
           {% elif level==3%}
-          <!-- <div class="flex flex-col justify-center">
-            <div class="text-2xl font-medium mb-5">
-              ● Sensitive Information that can be easily used to launch the Information leaked<br>
-              &nbsp;&nbsp; can cause moderate impact and damages to the users
-            </div>
-            <div class="flex flex-row mb-5">
-              <div class="text-2xl font-medium">●&nbsp;</div>
-              <div class="text-2xl font-medium underline">Suggestion:</div>
-            </div>
-            <div class="flex flex-row ml-5">
-              <div class="text-2xl font-medium">●&nbsp;</div>
-              {% for i in suggestion %}
-              <div class="grid ml-5 gap-3">
-                {% for i in suggestion %}
-                <div class="flex flex-row text-2xl font-medium">
-                  <div class="flex flex-row">
-                    <div class="ml-1">● There is an information about your</div>
-                    <div class="text-red-500 ml-1">{{i[0]}}</div>
-                    <div class="ml-1">locate on</div>
-                  </div>
-                  <a href="{{i[3]}}" class="text-blue-600 hover:text-blue-900 underline ml-1 mr-1">{{i[1]}}</a>
-                  website.
-                </div>
-                {%for j in i[2]%}
-                <div class="grid text-2xl font-medium ml-5 items-center">
-                  {{j}}
-                  <br>
-                </div>
-                {% endfor %}
-                {% endfor %}
-              </div>
-              {% endfor %}
-            </div>
-          </div> -->
           <div class="flex flex-col justify-center mb-10">
             <div class="text-2xl font-medium mb-5">
               ● Sensitive Information that can be easily used to launch the Information leaked<br>
@@ -656,40 +571,6 @@
           </div>
 
           {% elif level==2%}
-          <!-- <div class="flex flex-col justify-center">
-            <div class="text-2xl font-medium mb-5">
-              ● Sensitive Information that can be easily used to launch the Information leaked<br> 
-              &nbsp;&nbsp; can cause minor impact and damages to the users
-            </div>
-            <div class="flex flex-row mb-5">
-              <div class="text-2xl font-medium">●&nbsp;</div>
-              <div class="text-2xl font-medium underline">Suggestion:</div>
-            </div>
-            <div class="flex flex-row ml-5">
-              <div class="text-2xl font-medium">●&nbsp;</div>
-              {% for i in suggestion %}
-              <div class="grid ml-5 gap-3">
-                {% for i in suggestion %}
-                <div class="flex flex-row text-2xl font-medium">
-                  <div class="flex flex-row">
-                    <div class="ml-1">● There is an information about your</div>
-                    <div class="text-red-500 ml-1">{{i[0]}}</div>
-                    <div class="ml-1">locate on</div>
-                  </div>
-                  <a href="{{i[3]}}" class="text-blue-600 hover:text-blue-900 underline ml-1 mr-1">{{i[1]}}</a>
-                  website.
-                </div>
-                {%for j in i[2]%}
-                <div class="grid text-2xl font-medium ml-5 items-center">
-                  {{j}}
-                  <br>
-                </div>
-                {% endfor %}
-                {% endfor %}
-              </div>
-              {% endfor %}
-            </div>
-          </div> -->
           <div class="flex flex-col justify-center mb-10">
             <div class="text-2xl font-medium mb-5">
               ● Sensitive Information that can be easily used to launch the Information leaked<br> 
@@ -732,6 +613,7 @@
             </div>
             <div class="grid ml-5 gap-3">
               {% for i in suggestion %}
+              <div class="mb-3">
               <div class="flex flex-row text-2xl font-medium">
                 <div class="flex flex-row">
                   <div class="ml-1">● There is an information about your</div>
@@ -747,11 +629,20 @@
                 <br>
               </div>
               {% endfor %}
+              </div>
               {% endfor %}
             </div>
           </div>
           {% endif %}
         </div>
+        
+        {% else %}
+        <div class="flex">
+          <div class="text-2xl font-medium">
+          ● There is insufficient information to calculate risk level
+          </div>
+        </div>
+        {% endif %}
       </div>
     </div>
 

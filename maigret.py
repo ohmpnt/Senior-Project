@@ -231,7 +231,7 @@ def sortIcon(input:list):
     return input
 
 def removeTrash(input:list):
-    trash = ['F6S','TJournal','Pixwox','TRASHBOX.RU']
+    trash = ['F6S','TJournal','Pixwox','TRASHBOX.RU', 'Strava', 'DonationsAlerts']
     for i in input:
         if i['sitename'] in trash:
             input.pop(input.index(i))

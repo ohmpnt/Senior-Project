@@ -17,17 +17,7 @@ def calculateRisk(input:dict) -> str :
         sugg = sugMain(listHigh)
     else:
         average=1
-        sugg = [['full name',
-                'facebook',
-                ['● Observe on your account and may consider changing the privacy settings',
-                '● Be careful when filling in full name information in unreliable sources'],
-                'https://www.facebook.com/135221053181397/about'],
-                ['date of birth',
-                'facebook',
-                ['● Observe on your account and may consider changing the privacy settings',
-                '● Be careful when filling in date of birth information in unreliable '
-                'sources'],
-                'https://www.facebook.com/135221053181397/about']]
+        sugg = []
     return average,sugg
 
 def findFifthHighest(risk:list, datas:list):
