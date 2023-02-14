@@ -12,8 +12,10 @@ def maigrets(input: list):
         temp,listWeb =profileSearch(i)
         newOut = merge(newOut,temp)
         listWebOut= listMerge(listWebOut,listWeb)
-    listWebOut = sortIcon(listWebOut)
+    pprint(listWebOut)
+    listWebOut = sortIcon(listWebOut) 
     listWebOut = removeTrash(listWebOut)
+    pprint(listWebOut)
     return newOut,listWebOut
 
 def listMerge (list1:list,list2:list) ->list :
@@ -232,10 +234,16 @@ def sortIcon(input:list):
 
 def removeTrash(input:list):
     trash = ['F6S','TJournal','Pixwox','TRASHBOX.RU', 'Strava', 'DonationsAlerts']
+    # pprint(input)
+    temp = input.copy()
     for i in input:
         if i['sitename'] in trash:
-            input.pop(input.index(i))
-    return input
+            print('--')
+            # print(input.index(i))
+            #input.pop(input.index(i))
+            temp.pop(temp.index(i))
+    # print('-------------------------------------------------------------------\n\n')
+    return temp
 # def checkdupe(input :list ,sitename:str):
 
 #     for count,data in enumerate(input):
@@ -246,3 +254,7 @@ def removeTrash(input:list):
 
 
 # pprint(list)
+
+
+
+
