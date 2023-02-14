@@ -213,13 +213,13 @@
 
             <tr class="bg-stone-50 transition duration-300 ease-in-out hover:bg-stone-300">
               <td class="border-l-8 border-amber-50 p-3 text-center text-white text-xl">Address</td>
-              {% if result['adress']%}
+              {% if result['address']%}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/tick.jpg'></td>
               {% else %}
               <td class="flex justify-center"><img class="w-10" src='/static/assets/cross.png'></td>
               {% endif %}
               <td class="">
-                {% for i in result['adress'] %}
+                {% for i in result['address'] %}
                 <a class="flex justify-center text-white underline hover:text-blue-300" href="{{i['url']}}">
                   Link</a>
                 {% endfor %}
