@@ -61,7 +61,8 @@ def googleScrape (input:str):
     # try to find  facebook id or facebook username
     fbID = fbUsername(links)
     usernames= username(links)
-    return output,fbID,usernames
+    linkedin = linkedInSearch(input+" linkedin")
+    return output,fbID,usernames,linkedin
     
     
 
@@ -103,3 +104,13 @@ def delSymbol (input:list):
         input[count]=data
 
     return input
+
+def linkedInSearch (input: str) :
+    src =search(input, tld="com" , num=10, stop=10, pause =2) 
+    link = []
+    for i in src:
+        link.append(i)
+    return link[0]
+
+
+
