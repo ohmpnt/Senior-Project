@@ -34,31 +34,50 @@ def search_linkedin(URL:str):
     address = soup.find("div", class_ = "top-card__subline-item")
     experience = soup("span", class_ = "top-card-link__description")
     education = soup("span", class_ = "top-card-link__description")
+
+    # Fullname
+    try:
+        data['fullName'].append({
+                                    'sitename': 'LinkedIn', 
+                                    'url' : URL,
+                                    'data': fullname.text.strip(),
+                                    'tag' : 'social network'
+                                })
+    except:
+        pass
     
-    data['fullName'].append({
-                                        'sitename': 'LinkedIn', 
-                                        'url' : URL,
-                                        'data': fullname.text.strip(),
-                                        'tag' : 'social network'
+    # Address
+    try:
+        data['address'].append({
+                                    'sitename': 'LinkedIn', 
+                                    'url' : URL,
+                                    'data': address.text.strip(),
+                                    'tag' : 'social network'
                                 })
-    data['address'].append({
-                                        'sitename': 'LinkedIn', 
-                                        'url' : URL,
-                                        'data': address.text.strip(),
-                                        'tag' : 'social network'
+    except:
+        pass
+    # Workplace
+    try:
+        data['workPlace'].append({
+                                    'sitename': 'LinkedIn', 
+                                    'url' : URL,
+                                    'data': experience[0].text.strip(),
+                                    'tag' : 'social network'
                                 })
-    data['workPlace'].append({
-                                        'sitename': 'LinkedIn', 
-                                        'url' : URL,
-                                        'data': experience[0].text.strip(),
-                                        'tag' : 'social network'
+    except:
+        pass
+
+    # Education
+    try:
+        data['education'].append({
+                                    'sitename': 'LinkedIn', 
+                                    'url' : URL,
+                                    'data': education[1].text.strip(),
+                                    'tag' : 'social network'
                                 })
-    data['education'].append({
-                                        'sitename': 'LinkedIn', 
-                                        'url' : URL,
-                                        'data': education[1].text.strip(),
-                                        'tag' : 'social network'
-                                })
+    except:
+        pass
+    
     # except:
     #     return data
     # print("Full-name: " + fullname.text.strip())
@@ -69,6 +88,7 @@ def search_linkedin(URL:str):
     # print("Experience: " + experience[0].text.strip())
     # print("Education: " + education[1].text.strip())
     # print(soup.prettify())
+
     print('linked in')
     pprint(data)
     return data
