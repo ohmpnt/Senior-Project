@@ -37,6 +37,7 @@ def matrix(dmg:str,likelihood:str) ->int :
     lowDmg = ['gaming', 'music', 'art', 'dating', 'movies', 'hobby', 'sport','forum','porn','social network','streaming']
     medDmg =['coding', 'news', 'blog', 'shopping', 'stock','education','career','unknow']
     highDmg =['trading', 'photo', 'finance','business','medicine']
+    
     lowLikely = ['DOB','occupation','relationship','username','fName','lName','gender']
     medLikely = ['education','fullName','familyMember','name','workPlace']
     highLikely =['ID','address','email','phoneNumber','picture']

@@ -1,4 +1,5 @@
 import json
+import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
@@ -26,9 +27,9 @@ def search_linkedin(URL:str):
     curPath = os.getcwd()
     driver = webdriver.Chrome(f"{curPath}/ggDriver/chromedriver.exe")
     driver.get(URL)
+    time.sleep(1)
     src = driver.page_source
     soup = BeautifulSoup(src, 'html.parser')
-
     fullname = soup.find("h1")
     bio = soup.find_all("div", class_ = "break-words")
     address = soup.find("div", class_ = "top-card__subline-item")
@@ -89,8 +90,8 @@ def search_linkedin(URL:str):
     # print("Education: " + education[1].text.strip())
     # print(soup.prettify())
 
-    print('linked in')
-    pprint(data)
+    # print('linked in')
+    # pprint(data)
     return data
 
-search_linkedin('https://th.linkedin.com/in/kantapon-srigadphach-1498b0204')
+# search_linkedin('https://th.linkedin.com/in/kantapon-srigadphach-1498b0204')

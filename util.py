@@ -28,7 +28,7 @@ def main(x:str)->list:
 
     #facebook    
     outputfb,username=fbScrape(fbU)
-    outLinked = search_linkedin(linkInLink)
+    # outLinked = search_linkedin(linkInLink)
     if  username == "":
         username =  x.replace(" ","")
         usernames.append(username)
@@ -42,7 +42,7 @@ def main(x:str)->list:
     outMaigrate,listOfWeb = maigrets(usernames) 
     # merge all the result together
     output = merge(outputfb,outputG)
-    output = merge(output,outLinked)
+    # output = merge(output,outLinked)
     finalOut = merge(output,outMaigrate)
     pprint(finalOut)
     # check if email are breach?
@@ -54,7 +54,7 @@ def main(x:str)->list:
     pprint(finalOut)
     pprint(listOfWeb)
     images(finalOut['picture'])
-      #load images 
+    #load images 
     revLink = revImages(finalOut['picture']) #do reverse image 
 
     # revImages(finalOut['picture']) #do reverse image 
@@ -129,7 +129,10 @@ def removeSymbol (input:list):
 #               'tag': 'social network',
 #               'url': 'https://www.facebook.com/fubuki.tang/about'}],
 #  'education': [],
-#  'email': [],
+#  'email': [{'data': 'kantapon.sri@student.mahidol.com',
+#             'sitename': 'mahidol ict',
+#             'tag': 'social network',
+#             'url': 'https://www.facebook.com/fubuki.tang/about'}],
 #  'fName': [],
 #  'familyMember': [],
 #  'fullName': [{'data': '',
@@ -305,7 +308,7 @@ def removeSymbol (input:list):
 #     return x,y,'Tang kantapon','Tang',1,revLink,sug
 
 
-main("kantapon srigadphach")
+# main("kantapon srigadphach")
 
 # out = maskData([{'data': 'sudsanguan.nga@mahidol.ac.th',
 #             'tag': 'unknow',
