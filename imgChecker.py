@@ -39,10 +39,12 @@ def revimg_search(url:str):
 
     
     curPath = os.getcwd()
-    driver = webdriver.Chrome(f"{curPath}/ggDriver/chromedriver.exe")
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    driver = webdriver.Chrome(f"{curPath}/ggDriver/chromedriver.exe", options=options)
     driver.maximize_window()
     driver.get("https://www.duplichecker.com/reverse-image-search.php")
-    time.sleep(0.5)
+    time.sleep(1)
     driver.execute_script("window.scrollBy(0,500)")
     inputlink = driver.find_element(By.XPATH, "//input[@id='url']")
     inputlink.send_keys(url)
@@ -58,7 +60,7 @@ def revimg_search(url:str):
 
     print(result)
     dataLink = [result[0],result[1],result[2],result[3]]
-
+    time.sleep(1)
     return  dataLink
 
 

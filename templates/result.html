@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Senior Project</title>
+  <title>HAWKER</title>
+  <link rel="icon" href="../static/assets/HAWKER.png">
   <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -356,7 +357,7 @@
 
     <!-- maigret list website-->
     <div class="flex flex-col mt-16">
-      <div class="flex flex-row p-5 mb-10 ml-16">
+      <div class="flex flex-row mb-10 ml-16">
         <p class="text-3xl font-medium">List of Website with&nbsp;</p>
         <p class="text-3xl font-medium text-red-500">{{user}}&nbsp;</p>
         <p class="text-3xl font-medium">Account</p>
@@ -388,7 +389,7 @@
     <div class="flex flex-row mt-16">
       <!-- Risk level -->
       <div class="flex basis-1/2 flex-col w-screen">
-        <div class="flex p-5 ml-16">
+        <div class="flex ml-16">
           <p class="text-3xl font-medium">Risk Level:&nbsp;</p>
           <p class="text-3xl font-medium text-red-500">
             {% if level == 1 %}
@@ -433,7 +434,7 @@
 
       <!-- Suggestion follow by Risk level -->
       <div class="flex basis-1/2 flex-col w-screen">
-        <div class="flex flex-row mb-5 p-5">
+        <div class="flex flex-row mb-5">
           <p class="text-3xl font-medium">Suggestion:&nbsp;</p>
           <p class="text-3xl font-medium text-red-500">
             {% if level == 1 %}

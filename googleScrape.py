@@ -11,7 +11,6 @@ def googleScrape (input:str):
 
     }
     src =search(input, tld="com" , num=10, stop=10, pause =2) 
-
     links = []
     for link in src:
         links.append(link)
@@ -21,10 +20,6 @@ def googleScrape (input:str):
             email = soup.find_all(text= re.compile('\s[\w\.-]+@[\w\.-]+\.\w{2,4}\s'))
             phoneNumber = soup.find_all(text= re.compile('\s0\d\d[\s-]\d\d\d[\s-]\d\d\d\d\s'))
             iden = soup.find_all(text= re.compile('\s\d[\s-]\d\d\d\d[\s-]\d\d\d\d\d[\s-]\d\d[\s-]\d\s'))
-            # print(link)
-            # print(email)
-            # print(phoneNumber)
-            # print(iden)
             email = delSymbol(email)
             phoneNumber = delSymbol(phoneNumber)
             iden = delSymbol(iden)
@@ -57,7 +52,7 @@ def googleScrape (input:str):
                                     }) 
         except:
             continue
-    # pprint(output)
+    
     # try to find  facebook id or facebook username
     fbID = fbUsername(links)
     usernames= username(links)
@@ -111,6 +106,3 @@ def linkedInSearch (input: str) :
     for i in src:
         link.append(i)
     return link[0]
-
-
-
