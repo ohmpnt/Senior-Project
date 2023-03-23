@@ -57,10 +57,9 @@ def revimg_search(url:str):
     for data in soup.find_all('div', class_='icon_svg'):
         for a in data.find_all('a'):
             result.append(a.get('href'))
-
     print(result)
     dataLink = [result[0],result[1],result[2],result[3]]
-    time.sleep(1)
+    driver.close()
     return  dataLink
 
 
