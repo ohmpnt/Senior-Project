@@ -6,8 +6,9 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 import os
 from pprint import pprint
+import re
 def search_linkedin(URL:str):
-    print(URL)
+
     data = {
         "DOB" : [],
         "fName" : [],
@@ -23,6 +24,8 @@ def search_linkedin(URL:str):
         "name":  [],
         "workPlace" : []
     }
+    if URL is None:
+        return data
     # try:
     curPath = os.getcwd()
     driver = webdriver.Chrome(f"{curPath}/ggDriver/chromedriver.exe")
@@ -79,6 +82,20 @@ def search_linkedin(URL:str):
     except:
         pass
     
+    try:
+        pic = []
+        for link in soup.find_all('img',attrs={'data-delayed-url': re.compile("^https://media.licdn.com")}):
+    
+            pic.append(link.get('data-delayed-url'))  
+
+        data['picture'].append({
+                                    'sitename': 'LinkedIn', 
+                                    'url' : URL,
+                                    'data': pic[0],
+                                    'tag' : 'social network'
+                                })
+    except:
+        pass
     # except:
     #     return data
     # print("Full-name: " + fullname.text.strip())
@@ -91,7 +108,8 @@ def search_linkedin(URL:str):
     # print(soup.prettify())
 
     # print('linked in')
-    # pprint(data)
+    pprint(data)
     return data
 
-# search_linkedin('https://th.linkedin.com/in/kantapon-srigadphach-1498b0204')
+
+search_linkedin("https://www.linkedin.com/in/kantapon-srigadphach-1498b0204/")

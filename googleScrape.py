@@ -102,7 +102,11 @@ def delSymbol (input:list):
 
 def linkedInSearch (input: str) :
     src =search(input, tld="com" , num=10, stop=10, pause =2) 
-    link = []
+    links = []
     for i in src:
-        link.append(i)
-    return link[0]
+        links.append(i)
+
+    if links:
+        return links[0]
+    else :
+        return None

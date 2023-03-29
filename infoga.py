@@ -1,7 +1,7 @@
 
 import os
 
-def infoga(input:str):
+def infoga(input:list):
 
 
     for count,info in enumerate(input) :

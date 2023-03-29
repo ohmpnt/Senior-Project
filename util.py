@@ -28,7 +28,7 @@ def main(x:str)->list:
 
     #facebook    
     outputfb,username=fbScrape(fbU)
-    # outLinked = search_linkedin(linkInLink)
+    outLinked = search_linkedin(linkInLink)
     if  username == "":
         username =  x.replace(" ","")
         usernames.append(username)
@@ -42,7 +42,7 @@ def main(x:str)->list:
     outMaigrate,listOfWeb = maigrets(usernames) 
     # merge all the result together
     output = merge(outputfb,outputG)
-    # output = merge(output,outLinked)
+    output = merge(output,outLinked)
     finalOut = merge(output,outMaigrate)
     pprint(finalOut)
     # check if email are breach?
