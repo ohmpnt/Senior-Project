@@ -156,7 +156,7 @@ def merge (dict_1:dict, dict_2:dict):
 def listWeb (input:list,name:str):
     #list of special icon sites
     showsite = ["Youtube","Facebook","Amazon","Reddit","VK","Instagram","Twitch","Ebay","Twitter","Wordpress","Pornhub","GitHub","Spotify",
-                "TikTok","Xvideos","Tumblr","Pinterest","Patreon","9gag","Academia","Adobe","Baidu","Figma","Freepik","Googlemap","Googleplus",
+                "TikTok","Xvideos","Tumblr","Pinterest","Patreon","9gag","Academia.edu","Adobe","Baidu","Figma","Freepik","Googlemap","Googleplus",
                 "Imgur","Medium","OracleCommunity","Playstore","Quora","Researchgate","Roblox","Shutterstock","Slack","Slideshare","Soundcloud",
                 "Stackoverflow","Steam","Telegram","TradingView","Trello","TripAdvisor","Vimeo","Weibo","Wikipedia","Xhamster","VSCO"] 
     listOfWeb = []
@@ -183,7 +183,7 @@ def listWeb (input:list,name:str):
 #sort the icon by showsite first
 def sortIcon(input:list):
     showsite = ["Youtube","Facebook","Amazon","Reddit","VK","Instagram","Twitch","Ebay","Twitter","Wordpress","Pornhub","GitHub","Spotify",
-                "TikTok","Xvideos","Tumblr","Pinterest","Patreon","9gag","Academia","Adobe","Baidu","Figma","Freepik","Googlemap","Googleplus",
+                "TikTok","Xvideos","Tumblr","Pinterest","Patreon","9gag","Academia.edu","Adobe","Baidu","Figma","Freepik","Googlemap","Googleplus",
                 "Imgur","Medium","OracleCommunity","Playstore","Quora","Researchgate","Roblox","Shutterstock","Slack","Slideshare","Soundcloud",
                 "Stackoverflow","Steam","Telegram","TradingView","Trello","TripAdvisor","Vimeo","Weibo","Wikipedia","Xhamster","VSCO"] 
     for i in input:
