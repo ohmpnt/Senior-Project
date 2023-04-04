@@ -13,22 +13,35 @@ import shutil
 import os
 
 def main(x:str)->list:
-    # google 
+    print(" _    _                _             \n| |  | |              | |            \n| |__| | __ ___      _| | _____ _ __ \n|  __  |/ _` \ \ /\ / / |/ / _ \ '__|\n| |  | | (_| |\ V  V /|   <  __/ |   \n|_|  |_|\__,_| \_/\_/ |_|\_\___|_|   ")
+    # check weather the report folder is deleted in case yes make the reports folder
     isExist = os.path.exists('reports')
     if not isExist:
         os.mkdir('reports')
     
-    usernames = []
+    usernames = [] #for keep username to use in maigret module
+
+    # google module
+    print("------------------------------------- google search start -------------------------------------")
     outputG,fbU,username,linkInLink =googleScrape(x)  
+    print("------------------------------------- google search end   -------------------------------------")
+    # add username to list uernames if usernamenot empty
     if username != "":
         usernames.append(username)
-
+    # if not found facebook id account assume that the account is "firstname.lastname"
     if fbU == "":
         fbU = x.replace(" ",".")
 
-    #facebook    
+    #facebook module
+    print("------------------------------------- facebook module start -------------------------------------")
     outputfb,username=fbScrape(fbU)
+    print("------------------------------------- facebook module end   -------------------------------------")
+    # linkedin module
+    print("------------------------------------- linkedin module start -------------------------------------")
     outLinked = search_linkedin(linkInLink)
+    print("------------------------------------- linkedin module end   -------------------------------------")
+
+    # "firstname.lastname" add to usernames if not found username in facebook module
     if  username == "":
         username =  x.replace(" ","")
         usernames.append(username)
@@ -36,35 +49,57 @@ def main(x:str)->list:
         usernames.append(username)
         usernames.append(x.replace(" ",""))
 
-    usernames = removeSymbol(usernames) #remove symbol from username
+    usernames = removeSymbol(usernames) #remove symbol from usernames
     usernames = list(dict.fromkeys(usernames)) #remove duplicate
-    #maigrete
-    outMaigrate,listOfWeb = maigrets(usernames) 
+
+    #maigrete module
+    print("------------------------------------- Maigret module start -------------------------------------")
+    outMaigrate,listOfWeb = maigrets(usernames)
+    print("------------------------------------- Maigret module end   -------------------------------------")
+
+
     # merge all the result together
     output = merge(outputfb,outputG)
     output = merge(output,outLinked)
     finalOut = merge(output,outMaigrate)
-    pprint(finalOut)
-    # check if email are breach?
+    
+
+    # check if email are breach by Infoga module
+    print("------------------------------------- Infoga module start -------------------------------------")
     finalOut['email'] = infoga(finalOut['email'])
-    # mask contact information
+    print("------------------------------------- Infoga module end   -------------------------------------")
+    # mask all of the contact information
     finalOut['email'] = maskData(finalOut['email'])
     finalOut['phoneNumber'] = maskData(finalOut['phoneNumber'])
     finalOut['ID']= maskData(finalOut['ID'])
-    pprint(finalOut)
-    pprint(listOfWeb)
-    images(finalOut['picture'])
+
     #load images 
-    revLink = revImages(finalOut['picture']) #do reverse image 
+    images(finalOut['picture'])
+
+    # imgChecker module
+    print("------------------------------------- duplichecker module start -------------------------------------")
+    revLink = revImages(finalOut['picture']) 
+    print("------------------------------------- duplichecker module end   -------------------------------------")
+
+
+    # show final output
+    print("-------------------------------------  final data   -------------------------------------")
+    pprint(finalOut)
+    print("------------------------------------- final listweb -------------------------------------")
+    pprint(listOfWeb)
+    print("------------------------------------- final listweb -------------------------------------")
+
+    
 
     # revImages(finalOut['picture']) #do reverse image 
     riskLevel,suggestion = calculateRisk(finalOut)
-    pprint(suggestion)
+
+    # remove reports folder(user data)
     shutil.rmtree("reports")
 
     return finalOut,listOfWeb,usernames[0],x,riskLevel,revLink,suggestion
 
-
+# merge list in dict
 def merge (dict_1:dict, dict_2:dict):
     for key, value in dict_2.items():
         if key in dict_1:
@@ -76,18 +111,18 @@ def merge (dict_1:dict, dict_2:dict):
 
     return dict_1
 
-
+# mask the data
 def maskData (input:list) :
     for count,word in enumerate(input):
         temp = word['data']
-        if '@' in temp :
+        if '@' in temp : # incase of an email we wil mask the half first part of email
             s = temp.split('@')
             lens = len(s[0])
             maskNum = math.floor(lens/2)
             temp = temp.replace(temp[0:maskNum],'*'*maskNum,1)
             word['data']=temp
             input[count] = word    
-        else:
+        else: #any thing else we mask half of it
             lens = len(temp)
             maskNum = math.ceil(lens/2)
             temp = temp.replace(temp[0:maskNum],'*'*maskNum,1)
@@ -96,6 +131,7 @@ def maskData (input:list) :
 
     return input
 
+# remove all the symbol using regrex
 def removeSymbol (input:list):
 
     for count,i in enumerate(input):
@@ -103,219 +139,5 @@ def removeSymbol (input:list):
 
     return input
 
-# def listTag(input:dict) :
-#     data = []
-#     for key,value in dict.items(input):
-#         if value != []:
-#             data.append(key)
-#     useTag = ['gaming', 'music', 'art', 'dating', 'movies', 'hobby', 'sport','forum','porn','social network','coding', 'news', 'blog', 'shopping', 'stock','education','career','trading', 'photo', 'finance','business','medicine','streaming']
-#     tag = []
-#     for  i in input :
-#         temp = input[i]
-#         for j in temp :
-#             if j['tag'] in useTag:
-#                 tag.append(j['tag'])
 
-#     tag = list(dict.fromkeys(tag))
-
-#     return data,tag
-
-
-# def test():
-#     x={'DOB': [],
-#  'ID': [],
-#  'address': [{'data': '',
-#               'sitename': 'facebook',
-#               'tag': 'social network',
-#               'url': 'https://www.facebook.com/fubuki.tang/about'}],
-#  'education': [],
-#  'email': [{'data': 'kantapon.sri@student.mahidol.com',
-#             'sitename': 'mahidol ict',
-#             'tag': 'social network',
-#             'url': 'https://www.facebook.com/fubuki.tang/about'}],
-#  'fName': [],
-#  'familyMember': [],
-#  'fullName': [{'data': '',
-#                'sitename': 'facebook',
-#                'tag': 'social network',
-#                'url': 'https://www.facebook.com/fubuki.tang/about'},
-#               {'data': 'tangkantapon',
-#                'sitename': 'Twitch',
-#                'tag': 'streaming',
-#                'url': 'https://www.twitch.tv/tangkantapon'},
-#               {'data': 'Kantapon Srigadphach',
-#                'sitename': 'GitHub',
-#                'tag': 'coding',
-#                'url': 'https://github.com/tangkantapon'}],
-#  'gender': [{'data': '',
-#              'sitename': 'facebook',
-#              'tag': 'social network',
-#              'url': 'https://www.facebook.com/fubuki.tang/about'}],
-#  'lName': [],
-#  'name': [],
-#  'occupation': [],
-#  'phoneNumber': [],
-#  'picture': [{'data': 'https://scontent.fbkk28-1.fna.fbcdn.net/v/t39.30808-6/290501684_5219335674825610_671348912778975975_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=104&ccb=1-7&_nc_sid=85a577&efg=eyJpIjoidCJ9&_nc_ohc=DQVM3C4CUaIAX_gsdS1&_nc_ht=scontent.fbkk28-1.fna&oh=00_AfAsd0d4H_tQUe6iK9DQyhrcvxad7RuK9VCF-FURv608OQ&oe=63E99FA8&manual_redirect=1',
-#               'sitename': 'facebook',
-#               'tag': 'social network',
-#               'url': 'https://www.facebook.com/fubuki.tang/about'},
-#              {'data': 'https://static-cdn.jtvnw.net/user-default-pictures-uv/ebe4cd89-b4f4-4cd9-adac-2f30151b4209-profile_image-150x150.png',
-#               'sitename': 'Twitch',
-#               'tag': 'streaming',
-#               'url': 'https://www.twitch.tv/tangkantapon'},
-#              {'data': 'https://avatars.githubusercontent.com/u/51602945?v=4',
-#               'sitename': 'GitHub',
-#               'tag': 'coding',
-#               'url': 'https://github.com/tangkantapon'},
-#              {'data': 'flex: 0 0 '
-#                       '80px;https://cuad.ask.fm/assets2/154/971/066/880/normal/avatar.jpg',
-#               'sitename': 'AskFM',
-#               'tag': 'eg',
-#               'url': 'https://ask.fm/tangkantapon'}],
-#  'relationship': [{'data': '',
-#                    'sitename': 'facebook',
-#                    'tag': 'social network',
-#                    'url': 'https://www.facebook.com/fubuki.tang/about'}],
-#  'username': [{'data': '',
-#                'sitename': 'facebook',
-#                'tag': 'social network',
-#                'url': 'https://www.facebook.com/fubuki.tang/about'},
-#               {'data': 'tangkantapon',
-#                'sitename': 'Twitch',
-#                'tag': 'streaming',
-#                'url': 'https://www.twitch.tv/tangkantapon'}],
-#  'workPlace': []}
-#     y=[{'img': 'GitHub.png',
-#   'name': ['tangkantapon'],
-#   'sitename': 'GitHub',
-#   'url': ['https://github.com/tangkantapon']},
-#  {'img': 'Twitch.png',
-#   'name': ['tangkantapon'],
-#   'sitename': 'Twitch',
-#   'url': ['https://www.twitch.tv/tangkantapon']},
-#  {'img': 'Tumblr.png',
-#   'name': ['tangktp'],
-#   'sitename': 'Tumblr',
-#   'url': ['https://tangktp.tumblr.com/']},
-#  {'img': 'Pinterest.png',
-#   'name': ['tangktp', 'tangkantapon'],
-#   'sitename': 'Pinterest',
-#   'url': ['https://www.pinterest.com/tangktp/',
-#           'https://www.pinterest.com/tangkantapon/']},
-#  {'img': 'K.png',
-#   'name': ['tangktp'],
-#   'sitename': 'Kaggle',
-#   'url': ['https://www.kaggle.com/tangktp']},
-#  {'img': 'P.png',
-#   'name': ['tangktp', 'tangkantapon'],
-#   'sitename': 'Picuki',
-#   'url': ['https://www.picuki.com/profile/tangktp',
-#           'https://www.picuki.com/profile/tangkantapon']},
-#  {'img': 'S.png',
-#   'name': ['tangktp', 'tangkantapon'],
-#   'sitename': 'Strava',
-#   'url': ['https://www.strava.com/athletes/tangktp',
-#           'https://www.strava.com/athletes/tangkantapon']},
-#  {'img': 'T.png',
-#   'name': ['tangktp', 'tangkantapon'],
-#   'sitename': 'TJournal',
-#   'url': ['https://tjournal.ru/search/v2/subsite/relevant?query=tangktp',
-#           'https://tjournal.ru/search/v2/subsite/relevant?query=tangkantapon']},
-#  {'img': 'D.png',
-#   'name': ['tangktp', 'tangkantapon'],
-#   'sitename': 'Dumpor',
-#   'url': ['https://dumpor.com/v/tangktp', 'https://dumpor.com/v/tangkantapon']},
-#  {'img': 'D.png',
-#   'name': ['tangktp', 'tangkantapon'],
-#   'sitename': 'DonationsAlerts',
-#   'url': ['https://www.donationalerts.com/r/tangktp',
-#           'https://www.donationalerts.com/r/tangkantapon']},
-#  {'img': 'G.png',
-#   'name': ['tangkantapon'],
-#   'sitename': 'GitHubGist',
-#   'url': ['https://gist.github.com/tangkantapon']},
-#  {'img': 'N.png',
-#   'name': ['tangkantapon'],
-#   'sitename': 'Nitter',
-#   'url': ['https://nitter.net/tangkantapon']},
-#  {'img': 'R.png',
-#   'name': ['tangkantapon'],
-#   'sitename': 'Roblox',
-#   'url': ['https://www.roblox.com/user.aspx?username=tangkantapon']},
-#  {'img': 'g.png',
-#   'name': ['tangkantapon'],
-#   'sitename': 'giphy.com',
-#   'url': ['https://giphy.com/channel/tangkantapon']},
-#  {'img': 'A.png',
-#   'name': ['tangkantapon'],
-#   'sitename': 'Academia.edu',
-#   'url': ['https://independent.academia.edu/tangkantapon']},
-#  {'img': 'A.png',
-#   'name': ['tangkantapon'],
-#   'sitename': 'AskFM',
-#   'url': ['https://ask.fm/tangkantapon']},
-#  {'img': 'V.png',
-#   'name': ['tangkantapon'],
-#   'sitename': 'VSCO',
-#   'url': ['https://vsco.co/tangkantapon']},
-#  {'img': 'g.png',
-#   'name': ['tangkantapon'],
-#   'sitename': 'giters.com',
-#   'url': ['https://giters.com/tangkantapon']}]
-#     sug = []
-#     sug = [['photo',
-#   'GitHub',
-#   ['● Observe on your account and may consider changing the privacy settings',
-#    '● Be careful when uploading a photo in unreliable sources'],
-#   'https://github.com/Tangkantapon'],
-#  ['address',
-#   'Facebook',
-#   ['● Observe on your account and may consider changing the privacy settings',
-#    '● Be careful when filling in address information in unreliable sources'],
-#   'https://www.facebook.com/fubuki.tang/about'],
-#  ['full name',
-#   'GitHub',
-#   ['● Observe on your account and may consider changing the privacy settings',
-#    '● Be careful when filling in full name information in unreliable sources'],
-#   'https://github.com/Tangkantapon'],
-#  ['photo',
-#   'Facebook',
-#   ['● Observe on your account and may consider changing the privacy settings',
-#    '● Be careful when uploading a photo in unreliable sources'],
-#   'https://www.facebook.com/fubuki.tang/about'],
-#  ['photo',
-#   'Twitch',
-#   ['● Observe on your account and may consider changing the privacy settings',
-#    '● Be careful when uploading a photo in unreliable sources'],
-#   'https://www.twitch.tv/Tangkantapon']]
-#     revLink = [['https://lens.google.com/uploadbyurl?url=https%3A%2F%2Fscontent.fbkk28-1.fna.fbcdn.net%2Fv%2Ft39.30808-6%2F290501684_5219335674825610_671348912778975975_n.jpg%3Fstp%3Dcp0_dst-jpg_e15_fr_q65%26_nc_cat%3D104%26ccb%3D1-7%26_nc_sid%3D85a577%26efg%3DeyJpIjoidCJ9%26_nc_ohc%3DDQVM3C4CUaIAX_gsdS1%26_nc_ht%3Dscontent.fbkk28-1.fna%26oh%3D00_AfAsd0d4H_tQUe6iK9DQyhrcvxad7RuK9VCF-FURv608OQ%26oe%3D63E99FA8%26manual_redirect%3D1', 
-#                 'https://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=https%3A%2F%2Fscontent.fbkk28-1.fna.fbcdn.net%2Fv%2Ft39.30808-6%2F290501684_5219335674825610_671348912778975975_n.jpg%3Fstp%3Dcp0_dst-jpg_e15_fr_q65%26_nc_cat%3D104%26ccb%3D1-7%26_nc_sid%3D85a577%26efg%3DeyJpIjoidCJ9%26_nc_ohc%3DDQVM3C4CUaIAX_gsdS1%26_nc_ht%3Dscontent.fbkk28-1.fna%26oh%3D00_AfAsd0d4H_tQUe6iK9DQyhrcvxad7RuK9VCF-FURv608OQ%26oe%3D63E99FA8%26manual_redirect%3D1', 
-#                 'https://yandex.com/images/search?source=collections&&url=https%3A%2F%2Fscontent.fbkk28-1.fna.fbcdn.net%2Fv%2Ft39.30808-6%2F290501684_5219335674825610_671348912778975975_n.jpg%3Fstp%3Dcp0_dst-jpg_e15_fr_q65%26_nc_cat%3D104%26ccb%3D1-7%26_nc_sid%3D85a577%26efg%3DeyJpIjoidCJ9%26_nc_ohc%3DDQVM3C4CUaIAX_gsdS1%26_nc_ht%3Dscontent.fbkk28-1.fna%26oh%3D00_AfAsd0d4H_tQUe6iK9DQyhrcvxad7RuK9VCF-FURv608OQ%26oe%3D63E99FA8%26manual_redirect%3D1&rpt=imageview', 
-#                 'https://www.tineye.com/search/?&url=https%3A%2F%2Fscontent.fbkk28-1.fna.fbcdn.net%2Fv%2Ft39.30808-6%2F290501684_5219335674825610_671348912778975975_n.jpg%3Fstp%3Dcp0_dst-jpg_e15_fr_q65%26_nc_cat%3D104%26ccb%3D1-7%26_nc_sid%3D85a577%26efg%3DeyJpIjoidCJ9%26_nc_ohc%3DDQVM3C4CUaIAX_gsdS1%26_nc_ht%3Dscontent.fbkk28-1.fna%26oh%3D00_AfAsd0d4H_tQUe6iK9DQyhrcvxad7RuK9VCF-FURv608OQ%26oe%3D63E99FA8%26manual_redirect%3D1'], 
-#                 ['https://lens.google.com/uploadbyurl?url=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F51602945%3Fv%3D4', 
-#                 'https://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F51602945%3Fv%3D4', 
-#                 'https://yandex.com/images/search?source=collections&&url=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F51602945%3Fv%3D4&rpt=imageview', 
-#                 'https://www.tineye.com/search/?&url=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F51602945%3Fv%3D4'], 
-#                 ['https://lens.google.com/uploadbyurl?url=https%3A%2F%2Fstatic-cdn.jtvnw.net%2Fuser-default-pictures-uv%2Febe4cd89-b4f4-4cd9-adac-2f30151b4209-profile_image-150x150.png', 
-#                 'https://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=https%3A%2F%2Fstatic-cdn.jtvnw.net%2Fuser-default-pictures-uv%2Febe4cd89-b4f4-4cd9-adac-2f30151b4209-profile_image-150x150.png', 
-#                 'https://yandex.com/images/search?source=collections&&url=https%3A%2F%2Fstatic-cdn.jtvnw.net%2Fuser-default-pictures-uv%2Febe4cd89-b4f4-4cd9-adac-2f30151b4209-profile_image-150x150.png&rpt=imageview', 
-#                 'https://www.tineye.com/search/?&url=https%3A%2F%2Fstatic-cdn.jtvnw.net%2Fuser-default-pictures-uv%2Febe4cd89-b4f4-4cd9-adac-2f30151b4209-profile_image-150x150.png'], 
-#                 ['https://lens.google.com/uploadbyurl?url=https%3A%2F%2Fcuad.ask.fm%2Fassets2%2F154%2F971%2F066%2F880%2Fnormal%2Favatar.jpg', 
-#                 'https://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=https%3A%2F%2Fcuad.ask.fm%2Fassets2%2F154%2F971%2F066%2F880%2Fnormal%2Favatar.jpg', 
-#                 'https://yandex.com/images/search?source=collections&&url=https%3A%2F%2Fcuad.ask.fm%2Fassets2%2F154%2F971%2F066%2F880%2Fnormal%2Favatar.jpg&rpt=imageview', 
-#                 'https://www.tineye.com/search/?&url=https%3A%2F%2Fcuad.ask.fm%2Fassets2%2F154%2F971%2F066%2F880%2Fnormal%2Favatar.jpg']]
-
-#     return x,y,'Tang kantapon','Tang',1,revLink,sug
-
-
-# main("kantapon srigadphach")
-
-# out = maskData([{'data': 'sudsanguan.nga@mahidol.ac.th',
-#             'tag': 'unknow',
-#             'url': 'https://graduate.mahidol.ac.th/engine/structure/content/curriculum/info_prof.php?id=471726'},
-#            {'data': 'den.tup@mahidol.ac.thหร',
-#             'tag': 'unknow',
-#             'url': 'https://www.facebook.com/ict.mahidol.university/posts/%E0%B8%84%E0%B8%93%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%84%E0%B9%82%E0%B8%99%E0%B9%82%E0%B8%A5%E0%B8%A2%E0%B8%B5%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%99%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%AA%E0%B8%B2%E0%B8%A3-ict-%E0%B8%A1%E0%B8%A1%E0%B8%AB%E0%B8%B4%E0%B8%94%E0%B8%A5-%E0%B8%82%E0%B8%AD%E0%B9%81%E0%B8%AA%E0%B8%94%E0%B8%87%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A2%E0%B8%B4%E0%B8%99%E0%B8%94%E0%B8%B5%E0%B8%81%E0%B8%B1%E0%B8%9A-%E0%B8%A3%E0%B8%A8-%E0%B8%94%E0%B8%A3%E0%B8%AA%E0%B8%B8%E0%B8%94%E0%B8%AA%E0%B8%87%E0%B8%A7%E0%B8%99-%E0%B8%87%E0%B8%B2%E0%B8%A1/10156814210292275/'}])
-
-# pprint(out)
-
+main("snowy")

@@ -8,7 +8,6 @@ import os
 from pprint import pprint
 import re
 def search_linkedin(URL:str):
-
     data = {
         "DOB" : [],
         "fName" : [],
@@ -26,19 +25,21 @@ def search_linkedin(URL:str):
     }
     if URL is None:
         return data
-    # try:
     curPath = os.getcwd()
-    driver = webdriver.Chrome(f"{curPath}/ggDriver/chromedriver.exe")
-    driver.get(URL)
+    driver = webdriver.Chrome(f"{curPath}/ggDriver/chromedriver.exe") # open google chrome webdriver
+    driver.get(URL) #get to the url
     time.sleep(1)
-    src = driver.page_source
+    src = driver.page_source #get the page source
     soup = BeautifulSoup(src, 'html.parser')
+    # try to find the information on page source
     fullname = soup.find("h1")
     bio = soup.find_all("div", class_ = "break-words")
     address = soup.find("div", class_ = "top-card__subline-item")
     experience = soup("span", class_ = "top-card-link__description")
     education = soup("span", class_ = "top-card-link__description")
 
+
+    # add the information we found into dict
     # Fullname
     try:
         data['fullName'].append({
@@ -81,7 +82,7 @@ def search_linkedin(URL:str):
                                 })
     except:
         pass
-    
+    # profile picture
     try:
         pic = []
         for link in soup.find_all('img',attrs={'data-delayed-url': re.compile("^https://media.licdn.com")}):
@@ -96,20 +97,5 @@ def search_linkedin(URL:str):
                                 })
     except:
         pass
-    # except:
-    #     return data
-    # print("Full-name: " + fullname.text.strip())
-    # for text in bio:
-    #     print("Bio: " + text.get_text().strip())
-    #     break
-    # print("Address: " + address.text.strip())
-    # print("Experience: " + experience[0].text.strip())
-    # print("Education: " + education[1].text.strip())
-    # print(soup.prettify())
-
-    # print('linked in')
-    pprint(data)
+    
     return data
-
-
-search_linkedin("https://www.linkedin.com/in/kantapon-srigadphach-1498b0204/")

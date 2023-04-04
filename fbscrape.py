@@ -17,10 +17,13 @@ def fbScrape(x:str)->list:
         "relationship": [],
         "picture" : []
     }
-    linkfb = "https://www.facebook.com/"+ x +"/about"
+    linkfb = "https://www.facebook.com/"+ x +"/about" #construct the facebook url
     username = ""
     try:
-        src=get_profile(x, cookies = "cookies.txt")
+        src=get_profile(x, cookies = "cookies.txt") #use facebook scrapper to get the profile data
+
+
+        # find every data in src
         basic_info,contact_info,Education,Relationship,Work,Live= '','','','','',''
         if 'Basic info' in src:
             basic_info = src['Basic info']
@@ -117,8 +120,7 @@ def fbScrape(x:str)->list:
                                     "sitename" : "facebook"
                                     }) 
     except:
-        print("cannot find the user's facebook")
-    # images(result["picture"])
+        print("cannot find the user's facebook") # in case cant find any facebook profile print this
+
     return result,username
 
-# fbScrape('fubuki.tang')

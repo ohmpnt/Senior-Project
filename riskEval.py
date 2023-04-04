@@ -1,16 +1,18 @@
 import math
 from pprint import pprint
-
+# main function of risk eval
 def calculateRisk(input:dict) -> str :
     risk=[]
     datas = []
-    for key,value in input.items() :
+    for key,value in input.items() : # loop through each data and put into matrix function
         
         for i in value:
             temp = matrix(i['tag'],key)
             if temp != None:
                 risk.append(temp)
-                datas.append([i['tag'],key,i['url'],i['sitename']])
+                datas.append([i['tag'],key,i['url'],i['sitename']]) #append to datas list to use to calculate the risk
+
+    # calculate the risk
     if len(risk) >0:
         average = math.floor(sum(risk)/len(risk))
         listHigh = findFifthHighest(risk,datas)
@@ -20,7 +22,8 @@ def calculateRisk(input:dict) -> str :
         sugg = []
     return average,sugg
 
-def findFifthHighest(risk:list, datas:list):
+# find the top five heighest risk information
+def findFifthHighest(risk:list, datas:list): 
     print(risk,datas)
     result = []
     for i in range(0,5):
@@ -32,12 +35,17 @@ def findFifthHighest(risk:list, datas:list):
             break
     return result
 
+
+
 def matrix(dmg:str,likelihood:str) ->int :
-    # print(dmg,'=============',likelihood)
+    # our risk matrix has 2 factor to consider damage and likelihood
+
+    # damage
     lowDmg = ['gaming', 'music', 'art', 'dating', 'movies', 'hobby', 'sport','forum','porn','social network','streaming']
     medDmg =['coding', 'news', 'blog', 'shopping', 'stock','education','career','unknow']
     highDmg =['trading', 'photo', 'finance','business','medicine']
     
+    # liklihood
     lowLikely = ['DOB','occupation','relationship','username','fName','lName','gender']
     medLikely = ['education','fullName','familyMember','name','workPlace']
     highLikely =['ID','address','email','phoneNumber','picture']
@@ -61,6 +69,7 @@ def matrix(dmg:str,likelihood:str) ->int :
     elif likelihood in highLikely and dmg in highDmg :
         return 5
 
+
 def sugMain (input:list):
     result = []
 
@@ -68,13 +77,18 @@ def sugMain (input:list):
         result.append(suggestion(i))
     return result
 
+
+# use to generate the suggestion word by using top 5 riskiest data
 def suggestion(input :list):
     
+    # classify the type of suggestion to be 4 type
     type1 = ['DOB','username','fName','fullName','lName','name','workPlace','occupation','education','familyMember','address']
     type2 = ['phoneNumber','email','ID']
     type3 = ['gender','relationship']
     type4 = ['picture']
     
+
+    # rewrite the word
     if input[1] == 'DOB':
         word = 'date of birth'
     elif input[1] == 'username':
@@ -110,11 +124,7 @@ def suggestion(input :list):
     elif input[1] == 'relationship':
         word = 'relationship'
 
-    # result = f"there is information about your {word} on {input[3]} website"
-    # names = ['● Observe on your account and may consider changing the privacy settings', f'● Be careful when filling in {word} information in unreliable sources']
-    # nl = '\n'
-    # text = f"Winners are:{nl}{nl.join(names)}"
-
+    # set the type of suggestion
     if input[1] in type1:
         detail = ['● Observe on your account and may consider changing the privacy settings', f'● Be careful when filling in {word} information in unreliable sources']
     elif input[1] in type2:
@@ -128,82 +138,3 @@ def suggestion(input :list):
     out = [word,input[3],detail,input[2]]
 
     return out
-
-# x = {'DOB': [{'data': '',
-#           'sitename': 'facebook',
-#           'tag': 'social network',
-#           'url': 'https://www.facebook.com/135221053181397/about'}],
-#  'ID': [],
-#  'address': [],
-#  'education': [],
-#  'email': [],
-#  'fName': [],
-#  'familyMember': [],
-#  'fullName': [{'data': '',
-#                'sitename': 'facebook',
-#                'tag': 'social network',
-#                'url': 'https://www.facebook.com/135221053181397/about'}],
-#  'gender': [],
-#  'lName': [],
-#  'name': [],
-#  'occupation': [],
-#  'phoneNumber': [],
-#  'picture': [],
-#  'relationship': [],
-#  'username': [],
-#  'workPlace': []}
-# {'DOB': [{'data': '',
-#           'sitename': 'facebook',
-#           'tag': 'social network',
-#           'url': 'https://www.facebook.com/135221053181397/about'}],
-#  'ID': [],
-#  'address': [],
-#  'education': [],
-#  'email': [],
-#  'fName': [],
-#  'familyMember': [],
-#  'fullName': [{'data': '',
-#                'sitename': 'facebook',
-#                'tag': 'social network',
-#                'url': 'https://www.facebook.com/135221053181397/about'}],
-#  'gender': [],
-#  'lName': [],
-#  'name': [],
-#  'occupation': [],
-#  'phoneNumber': [],
-#  'picture': [],
-#  'relationship': [],
-#  'username': [],
-#  'workPlace': []}
-# [{'img': 'Pinterest.png',
-#   'name': ['SudsanguanNgamsuriyaroj'],
-#   'sitename': 'Pinterest',
-#   'url': ['https://www.pinterest.com/SudsanguanNgamsuriyaroj/']},
-#  {'img': 'A.png',
-#   'name': ['SudsanguanNgamsuriyaroj'],
-#   'sitename': 'Academia.edu',
-#   'url': ['https://independent.academia.edu/SudsanguanNgamsuriyaroj']},
-#  {'img': 'S.png',
-#   'name': ['SudsanguanNgamsuriyaroj'],
-#   'sitename': 'Strava',
-#   'url': ['https://www.strava.com/athletes/SudsanguanNgamsuriyaroj']},
-#  {'img': 'P.png',
-#   'name': ['SudsanguanNgamsuriyaroj'],
-#   'sitename': 'Picuki',
-#   'url': ['https://www.picuki.com/profile/SudsanguanNgamsuriyaroj']},
-#  {'img': 'P.png',
-#   'name': ['SudsanguanNgamsuriyaroj'],
-#   'sitename': 'Pixwox',
-#   'url': ['https://www.pixwox.com/profile/SudsanguanNgamsuriyaroj/']},
-#  {'img': 'D.png',
-#   'name': ['SudsanguanNgamsuriyaroj'],
-#   'sitename': 'DonationsAlerts',
-#   'url': ['https://www.donationalerts.com/r/SudsanguanNgamsuriyaroj']},
-#  {'img': 'D.png',
-#   'name': ['SudsanguanNgamsuriyaroj'],
-#   'sitename': 'Dumpor',
-#   'url': ['https://dumpor.com/v/SudsanguanNgamsuriyaroj']}]
- 
-# risk,sugg =calculateRisk(x)
-
-# pprint(sugg)
