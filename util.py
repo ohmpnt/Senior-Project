@@ -140,4 +140,3 @@ def removeSymbol (input:list):
     return input
 
 
-main("snowy")

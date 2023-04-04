@@ -17,7 +17,7 @@ def infoga(input:list):
                 info['data'] = s+' (not breach)'
             else:
                 info['data'] = s+' (breach)'
-            input[count]= info     
+            input[count]= info
         except:
             print('invalid email')
     return input

@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 import os
 from pprint import pprint
 import re
+
 def search_linkedin(URL:str):
     data = {
         "DOB" : [],
@@ -37,8 +38,6 @@ def search_linkedin(URL:str):
     address = soup.find("div", class_ = "top-card__subline-item")
     experience = soup("span", class_ = "top-card-link__description")
     education = soup("span", class_ = "top-card-link__description")
-
-
     # add the information we found into dict
     # Fullname
     try:
@@ -50,7 +49,6 @@ def search_linkedin(URL:str):
                                 })
     except:
         pass
-    
     # Address
     try:
         data['address'].append({
@@ -71,7 +69,6 @@ def search_linkedin(URL:str):
                                 })
     except:
         pass
-
     # Education
     try:
         data['education'].append({
@@ -97,5 +94,4 @@ def search_linkedin(URL:str):
                                 })
     except:
         pass
-    
     return data
