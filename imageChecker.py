@@ -35,14 +35,17 @@ def revimg_search(url:str):
     enter = driver.find_element(By.ID,"checkReverse")
     enter.click() # click the search button
     time.sleep(1)
+    print(1)
     src = driver.page_source #get the result page source
     soup = BeautifulSoup(src, 'html.parser')
     result = []
     #find all the reverse image links
     for data in soup.find_all('div', class_='icon_svg'):
         for a in data.find_all('a'):
+            print(2)
             result.append(a.get('href'))
     dataLink = [result[0],result[1],result[2],result[3]]
+    print(3)
     driver.close()
     return  dataLink #return the link
 

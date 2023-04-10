@@ -1,12 +1,12 @@
 from googleScrape import googleScrape
-from fbscrape import fbScrape
+from fbScrape import fbScrape
 from maigret import maigrets
 from infoga import infoga
 import re
 from pprint import pprint
 import math
-from imgChecker import *
-from image import images    
+from imageChecker import *
+from imageHandler import images    
 from riskEval import calculateRisk
 from linkedIn import search_linkedin
 import shutil

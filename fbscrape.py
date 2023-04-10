@@ -1,6 +1,6 @@
 from facebook_scraper import get_profile
 from pprint import pprint
-from image import images
+from imageHandler import images
 
 def fbScrape(x:str)->list:
     result = {
