@@ -8,7 +8,7 @@ import os
 import requests
 import time
 import re
-
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 def revImages(input :list):
     result = []
@@ -21,11 +21,14 @@ def revImages(input :list):
     return result
 
 def revimg_search(url:str):
-
+    caps = DesiredCapabilities().CHROME
+    # caps["pageLoadStrategy"] = "normal"  #  Waits for full page load
+    # caps["pageLoadStrategy"] = "eager"  #  Waits for page to be interactive
+    caps["pageLoadStrategy"] = "eager"   # Do not wait for full page load
     curPath = os.getcwd()
     options = webdriver.ChromeOptions()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    driver = webdriver.Chrome(f"{curPath}/ggDriver/chromedriver.exe", options=options) #open google chrom web driver
+    driver = webdriver.Chrome(f"{curPath}/ggDriver/chromedriver.exe", options=options,desired_capabilities=caps) #open google chrom web driver
     driver.maximize_window()
     driver.get("https://www.duplichecker.com/reverse-image-search.php") #get to the duplichecker site
     time.sleep(1)
