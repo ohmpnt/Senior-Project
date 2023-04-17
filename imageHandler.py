@@ -6,9 +6,7 @@ def images(input:list):
     for count,info in enumerate(input):
         imgLink= info['data']
         loadImage(count,imgLink)
-
-
-
+        
 def loadImage(num:int,src:str):
     imageUrl = src
     url = imageUrl[imageUrl.rfind("https"):]  #start link with https incase of invalid link

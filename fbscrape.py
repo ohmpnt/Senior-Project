@@ -22,7 +22,6 @@ def fbScrape(x:str)->list:
     try:
         src=get_profile(x, cookies = "cookies.txt") #use facebook scrapper to get the profile data
 
-
         # find every data in src
         basic_info,contact_info,Education,Relationship,Work,Live= '','','','','',''
         if 'Basic info' in src:
@@ -123,4 +122,5 @@ def fbScrape(x:str)->list:
         print("cannot find the user's facebook") # in case cant find any facebook profile print this
 
     return result,username
+
 

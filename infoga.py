@@ -2,7 +2,6 @@
 import os
 
 def infoga(input:list):
-
     # loop though each email
     for count,info in enumerate(input) :
         s = info['data']

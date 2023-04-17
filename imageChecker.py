@@ -29,23 +29,25 @@ def revimg_search(url:str):
     driver.maximize_window()
     driver.get("https://www.duplichecker.com/reverse-image-search.php") #get to the duplichecker site
     time.sleep(1)
-    driver.execute_script("window.scrollBy(0,500)") #scroll down in case of small screen
+    driver.execute_script("document.body.style.zoom='50%'")
+    time.sleep(1)
+    # driver.execute_script("window.scrollBy(0,500)") #scroll down in case of small screen
     inputlink = driver.find_element(By.XPATH, "//input[@id='url']")
     inputlink.send_keys(url) #send in the url
-    enter = driver.find_element(By.ID,"checkReverse")
-    enter.click() # click the search button
+    inputlink.submit()
+    # enter = driver.find_element(By.ID,"checkReverse")
+    # enter.click() # click the search button
     time.sleep(1)
-    print(1)
     src = driver.page_source #get the result page source
     soup = BeautifulSoup(src, 'html.parser')
     result = []
     #find all the reverse image links
     for data in soup.find_all('div', class_='icon_svg'):
         for a in data.find_all('a'):
-            print(2)
             result.append(a.get('href'))
     dataLink = [result[0],result[1],result[2],result[3]]
-    print(3)
     driver.close()
     return  dataLink #return the link
 
+# x= [{'data': 'https://scontent.fbkk2-4.fna.fbcdn.net/v/t39.30808-6/340089215_908030273789884_7963349578819193249_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=-3XwhbJKMjAAX9g8hBl&_nc_ht=scontent.fbkk2-4.fna&oh=00_AfBovVzFtaGifH2JUW_jbY0mHBZDMT0Le5fKjHlVAOhP4w&oe=644287FF'},{'data': 'https://scontent.fbkk2-4.fna.fbcdn.net/v/t39.30808-6/340089215_908030273789884_7963349578819193249_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=-3XwhbJKMjAAX9g8hBl&_nc_ht=scontent.fbkk2-4.fna&oh=00_AfBovVzFtaGifH2JUW_jbY0mHBZDMT0Le5fKjHlVAOhP4w&oe=644287FF'},{'data': 'https://scontent.fbkk2-4.fna.fbcdn.net/v/t39.30808-6/340089215_908030273789884_7963349578819193249_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=-3XwhbJKMjAAX9g8hBl&_nc_ht=scontent.fbkk2-4.fna&oh=00_AfBovVzFtaGifH2JUW_jbY0mHBZDMT0Le5fKjHlVAOhP4w&oe=644287FF'}]
+# revImages(x)

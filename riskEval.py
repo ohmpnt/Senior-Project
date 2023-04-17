@@ -11,7 +11,6 @@ def calculateRisk(input:dict) -> str :
             if temp != None:
                 risk.append(temp)
                 datas.append([i['tag'],key,i['url'],i['sitename']]) #append to datas list to use to calculate the risk
-
     # calculate the risk
     if len(risk) >0:
         average = math.floor(sum(risk)/len(risk))
