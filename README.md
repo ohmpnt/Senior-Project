@@ -1,4 +1,4 @@
-# Maigret
+# Hawker
 
 <p align="center">
   <p align="center">
@@ -6,23 +6,20 @@
   </p>
 </p>
 
-<i>The Commissioner Jules Maigret is a fictional French police detective, created by Georges Simenon. His investigation method is based on understanding the personality of different people and their interactions.</i>
+<i> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Hawker definition, a person who hunts with hawks or other birds of prey. This symbolizes how our application is able to detect a user's personal information with eyes like a hawk. </i>
 
 ## About
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **A web application** that integrates a number of OSINT techniques to search for the target user's sensitive data. The user's photo and any private information that has been made publicly accessible online are retrieved. A risk score is created using the data gathered. This rating informs the user of the level of danger associated with accessing the information and how much information they have exposed online. Finally, based on the risk score, recommendations are made to the user to enable him or her decide how to use the information and maintain their privacy.
 
-**Maigret** collects a dossier on a person **by username only**, checking for accounts on a huge number of sites and gathering all the available information from web pages. No API keys required. Maigret is an easy-to-use and powerful fork of [Sherlock](https://github.com/sherlock-project/sherlock).
-
-Currently supported more than 3000 sites ([full list](https://github.com/soxoj/maigret/blob/main/sites.md)), search is launched against 500 popular sites in descending order of popularity by default. Also supported checking of Tor sites, I2P sites, and domains (via DNS resolving).
 
 ## Main features
 
-* Profile pages parsing, [extraction](https://github.com/soxoj/socid_extractor) of personal info, links to other profiles, etc.
-* Recursive search by new usernames and other ids found
-* Search by tags (site categories, countries)
-* Censorship and captcha detection
-* Requests retries
+* detect user's exposed sensitive information
+* email breach checker by [Infoga](https://github.com/m4ll0k/Infoga)
+* Reverse image 
+* Websites with user's account by [Maigret](https://github.com/soxoj/maigret)
+* Risk Evaluation
 
-See full description of Maigret features [in the documentation](https://maigret.readthedocs.io/en/latest/features.html).
 
 ## Installation
 
@@ -89,27 +86,8 @@ maigret user1 user2 user3 -a
 
 Use `maigret --help` to get full options description. Also options [are documented](https://maigret.readthedocs.io/en/latest/command-line-options.html).
 
-## Contributing
+## Credit
 
-Maigret has open-source code, so you may contribute your own sites by adding them to `data.json` file, or bring changes to it's code!
-If you want to contribute, don't forget to activate statistics update hook, command for it would look like this: `git config --local core.hooksPath .githooks/`
-You should make your git commits from your maigret git repo folder, or else the hook wouldn't find the statistics update script.
-
-## Demo with page parsing and recursive username search
-
-[PDF report](https://raw.githubusercontent.com/soxoj/maigret/main/static/report_alexaimephotographycars.pdf), [HTML report](https://htmlpreview.github.io/?https://raw.githubusercontent.com/soxoj/maigret/main/static/report_alexaimephotographycars.html)
-
-![animation of recursive search](https://raw.githubusercontent.com/soxoj/maigret/main/static/recursive_search.svg)
-
-![HTML report screenshot](https://raw.githubusercontent.com/soxoj/maigret/main/static/report_alexaimephotography_html_screenshot.png)
-
-![XMind 8 report screenshot](https://raw.githubusercontent.com/soxoj/maigret/main/static/report_alexaimephotography_xmind_screenshot.png)
-
-
-[Full console output](https://raw.githubusercontent.com/soxoj/maigret/main/static/recursive_search.md)
-
-## License
-
-MIT © [Maigret](https://github.com/soxoj/maigret)<br/>
-MIT © [Sherlock Project](https://github.com/sherlock-project/)<br/>
-Original Creator of Sherlock Project - [Siddharth Dushantha](https://github.com/sdushantha)
+[Maigret](https://github.com/soxoj/maigret)<br/>
+[Infoga](https://github.com/m4ll0k/Infoga)<br/>
+[Facebook-scraper](https://github.com/kevinzg/facebook-scraper)
