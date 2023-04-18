@@ -23,71 +23,74 @@
 
 ## Installation
 
-Maigret can be installed using pip, Docker, or simply can be launched from the cloned repo.
-
-Standalone EXE-binaries for Windows are located in [Releases section](https://github.com/soxoj/maigret/releases) of GitHub repository.
-
-Also you can run Maigret using cloud shells and Jupyter notebooks (see buttons below). 
-
-[![Open in Cloud Shell](https://user-images.githubusercontent.com/27065646/92304704-8d146d80-ef80-11ea-8c29-0deaabb1c702.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/soxoj/maigret&tutorial=README.md)
-<a href="https://repl.it/github/soxoj/maigret"><img src="https://replit.com/badge/github/soxoj/maigret" alt="Run on Replit" height="50"></a>
-
-<a href="https://colab.research.google.com/gist/soxoj/879b51bc3b2f8b695abb054090645000/maigret-collab.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" height="45"></a>
-<a href="https://mybinder.org/v2/gist/soxoj/9d65c2f4d3bec5dd25949197ea73cf3a/HEAD"><img src="https://mybinder.org/badge_logo.svg" alt="Open In Binder" height="45"></a>
+Maigret can be installed using pip and simply can be launched from the cloned repo.
 
 ### Package installing
 
-**NOTE**: Python 3.7 or higher and pip is required, **Python 3.8 is recommended.**
+**NOTE**: Python 3.8 or higher and pip is required, **Python 3.8 is recommended.**
+
+### Cloning a repository to directory
 
 ```bash
-# install from pypi
-pip3 install maigret
-
-# usage
-maigret username
+# clone a repository
+git clone https://github.com/ohmpnt/Senior-Project && cd Senior-Project
 ```
 
-### Cloning a repository
-
 ```bash
-# or clone and install manually
-git clone https://github.com/soxoj/maigret && cd maigret
+# clone folder Maigret and replace in our Maigret folder directory
+git clone https://github.com/soxoj/maigret
+
+# then go to the maigret directory and run this command in your terminal
 pip3 install -r requirements.txt
-
-# usage
-./maigret.py username
 ```
 
-### Docker
+```bash
+# clone Infoga and replace in our Infoga folder directory
+git https://github.com/m4ll0k/infoga
+
+# Then go to the Infoga directory and run this command in your terminal
+python setup.py install 
+```
+### Then follow these steps
+```bash
+# install Python Flask
+pip install -U Flask
+```
+```bash
+# install Selenium 4
+pip install -U selenium
+```
+```bash
+# install googlescrape
+pip install googlescrape
+```
+```bash
+# install googlesearch
+python3 -m pip install googlesearch-python
+```
 
 ```bash
-# official image
-docker pull soxoj/maigret
-
-# usage
-docker run -v /mydir:/app/reports soxoj/maigret:latest username --html
-
-# manual build
-docker build -t maigret .
+# install facebook-scraper
+pip install facebook-scraper
+```
+```bash
+# install google
+pip install google
 ```
 
 ## Usage examples
 
 ```bash
-# make HTML and PDF reports
-maigret user --html --pdf
+# run web server
+flask run
 
-# search on sites marked with tags photo & dating
-maigret user --tags photo,dating
-
-# search for three usernames on all available sites
-maigret user1 user2 user3 -a
+# run web server (open debug mode: On)
+python -m flask run --debug
 ```
-
-Use `maigret --help` to get full options description. Also options [are documented](https://maigret.readthedocs.io/en/latest/command-line-options.html).
 
 ## Credit
 
 [Maigret](https://github.com/soxoj/maigret)<br/>
 [Infoga](https://github.com/m4ll0k/Infoga)<br/>
-[Facebook-scraper](https://github.com/kevinzg/facebook-scraper)
+[Facebook-scraper](https://github.com/kevinzg/facebook-scraper)<br/>
+[Googlesearch](https://pypi.org/project/googlesearch-python/)
