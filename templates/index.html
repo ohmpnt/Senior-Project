@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Senior Project</title>
+    <title>HAWKER</title>
+    <link rel="icon" href="../static/assets/HAWKERlogo.png">
     <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
@@ -69,12 +70,12 @@
             <rect class="spinner_9y7u spinner_DF2s" x="1" y="1" rx="1" width="10" height="10" />
             <rect class="spinner_9y7u spinner_q27e" x="1" y="1" rx="1" width="10" height="10" />
         </svg>
-        <div class="flex justify-center items-center mt-5 text-xl font-medium">Searching... please wait</div>
+        <div class="flex justify-center items-center mt-5 text-xl font-medium">This might take a while, go grab some coffee!</div>
     </div>
 
 
     <div>
-        <div class="flex flex-cols mb-40">
+        <div class="flex flex-cols mb-20">
             <img class="h-44 p-5" src="/static/assets/logoict.png">
         </div>
         <div class="grid">
@@ -85,11 +86,11 @@
                 <h1 class="text-6xl font-bold text-center">HAWKER</h1>
             </div>
 
-            <div class="flex justify-center mb-24">
+            <div class="flex justify-center mb-28">
                 <form class="relative flex flex-cols w-3/6" role="search" action="/result" method="post"
                     onsubmit="$('#loading').show();">
-                    <input class="p-5 w-full h-16 border-black border-4 outline-none rounded-full" type="text"
-                        aria-label="Search" name="name_input" placeholder="Input fullname or email" required>
+                    <input class="p-5 w-full h-16 border-black border-4 outline-none rounded-full" type="text" autocomplete="off"
+                        aria-label="Search" name="name_input" placeholder="Input full name or username" required>
                     <button class="absolute inset-y-0 right-0 absolute fa fa-search fa-2x h-16 mr-5" type="submit">
                     </button>
                 </form>

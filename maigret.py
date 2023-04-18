@@ -6,42 +6,54 @@ from pprint import pprint
 
 
 def maigrets(input: list):
+    # input = list of usernames
     newOut = {}
     listWebOut = []
+    # loop through each username and put into maigret function
     for i in input:
-        temp,listWeb =profileSearch(i)
-        newOut = merge(newOut,temp)
-        listWebOut= listMerge(listWebOut,listWeb)
-    listWebOut = sortIcon(listWebOut)
-    listWebOut = removeTrash(listWebOut)
+        temp,listWeb =profileSearch(i) # put into maigret function
+        newOut = merge(newOut,temp) #merge with new data
+        listWebOut= listMerge(listWebOut,listWeb) #merge with new listweb
+    listWebOut = sortIcon(listWebOut) #sort the icon
+    listWebOut = removeTrash(listWebOut) #remove the unessesary website
     return newOut,listWebOut
 
+
+# use to merge list
 def listMerge (list1:list,list2:list) ->list :
-    
-    for i in list2:
-        if i not in list1:
-            list1.append(i)
+    result = list1
+    for i in range(len(result)):
+        temp = result[i]
+        for j in list2:
+            if temp['sitename'] == j['sitename']:
+                url = j['url']
+                name = j['name']
+                temp['url'].append(url[0])
+                temp['name'].append(name[0])
+                list2.pop(list2.index(j))
+
+    result = result+list2
+
+    return result
 
 
-    return list1
-
+# maigret function
 def profileSearch(input:str):
 
     print(input)
     curPath = os.getcwd()
-    os.system(f'python "{curPath}/maigret/maigret.py" {input} --json ndjson --timeout 8 ')
+    os.system(f'python "{curPath}/maigret/maigret.py" {input} --json ndjson --timeout 8 ') #call maigret tool
 
     try : 
-        file = open(f'reports/report_{input}_ndjson.json')
+        file = open(f'reports/report_{input}_ndjson.json') #open the report files
         datas = file.readlines()
         output= []
         for data in datas:
-            output.append(json.loads(data))
+            output.append(json.loads(data)) #put the file into json format
         file.close()
-        # pprint(output)
-        # print("----------------------------------------------------------------------------------------------------------------------------------------")
-        data = pageData(output)
-        weblist = listWeb(output)
+    
+        data = pageData(output) # call the page data to gather info onwebsite page
+        weblist = listWeb(output,input) # use to construct list web to display in web app
         return data,weblist
     except :
         print('something worng!')
@@ -50,6 +62,8 @@ def profileSearch(input:str):
 
 
 def pageData (input:list):
+
+    #the target name of information we want to get
     target = [
         ["username","username"],
         ["fullname","fullName"],
@@ -104,6 +118,7 @@ def pageData (input:list):
         "name":  []
     }
 
+    #loop through each element and add infomation to data list in json format
     for i in input:
         temp = i
         status = temp['status']
@@ -124,7 +139,7 @@ def pageData (input:list):
     return data
 
 
-
+# use to merge data list
 def merge (dict_1:dict, dict_2:dict):
     for key, value in dict_2.items():
         if key in dict_1:
@@ -136,208 +151,56 @@ def merge (dict_1:dict, dict_2:dict):
 
     return dict_1
 
-def listWeb (input):
 
-    showsite = ["Youtube","Facebook","Amazon","Reddit","VK","Instagram","Twitch","Ebay","Twitter","Wordpress","Pornhub","GitHub","Spotify","Tiktok","Xvideos","Tumblr","Pinterest","Patreon"]
-    # listOfWeb = [{'sitename' : temp['sitename'], 
-    #                     'url' : temp['url_user'],
-    #                     "img" : f"{firstLetter}.png"}]
-    # listOfWeb=[{'sitename' : "Youtube", 
-    #                    'url' : '',
-    #                     "img" : "Youtube_grey.png"},
-    #             {'sitename' : "Facebook", 
-    #                    'url' : '',
-    #                     "img" : "Facebook_grey.png"},
-    #             {'sitename' : "Amazon", 
-    #                    'url' : '',
-    #                     "img" : "Amazon_grey.png"},
-    #             {'sitename' : "Reddit", 
-    #                    'url' : '',
-    #                     "img" : "Reddit_grey.png"},
-    #             {'sitename' : "VK", 
-    #                    'url' : '',
-    #                     "img" : "VK_grey.png"},
-    #             {'sitename' : "Instagram", 
-    #                    'url' : '',
-    #                     "img" : "Instagram_grey.png"},
-    #             {'sitename' : "Twitch", 
-    #                    'url' : '',
-    #                     "img" : "Twitch_grey.png"},
-    #             {'sitename' : "Ebay", 
-    #                    'url' : '',
-    #                     "img" : "Ebay_grey.png"},
-    #             {'sitename' : "Twitter", 
-    #                    'url' : '',
-    #                     "img" : "Twitter_grey.png"},
-    #             {'sitename' : "Wordpress", 
-    #                    'url' : '',
-    #                     "img" : "Wordpress_grey.png"},
-    #             {'sitename' : "Pornhub", 
-    #                    'url' : '',
-    #                     "img" : "Pornhub_grey.png"},
-    #             {'sitename' : "GitHub", 
-    #                    'url' : '',
-    #                     "img" : "Github_grey.png"},
-    #             {'sitename' : "Spotify", 
-    #                    'url' : '',
-    #                     "img" : "Spotify_grey.png"},
-    #             {'sitename' : "Tiktok", 
-    #                    'url' : '',
-    #                     "img" : "Tiktok_grey.png"},
-    #             {'sitename' : "Xvideos", 
-    #                    'url' : '',
-    #                     "img" : "Xvideos_grey.png"},
-    #             {'sitename' : "Tumblr", 
-    #                    'url' : '',
-    #                     "img" : "Tumblr_grey.png"},
-    #             {'sitename' : "Pinterest", 
-    #                    'url' : '',
-    #                     "img" : "Pinterest_grey.png"},
-    #             {'sitename' : "Patreon", 
-    #                    'url' : '',
-    #                     "img" : "Patreon_grey.png"}]
+
+def listWeb (input:list,name:str):
+    #list of special icon sites
+    showsite = ["Youtube","Facebook","Amazon","Reddit","VK","Instagram","Twitch","Ebay","Twitter","Wordpress","Pornhub","GitHub","Spotify",
+                "TikTok","Xvideos","Tumblr","Pinterest","Patreon","9gag","Academia.edu","Adobe","Baidu","Figma","Freepik","Googlemap","Googleplus",
+                "Imgur","Medium","OracleCommunity","Playstore","Quora","Researchgate","Roblox","Shutterstock","Slack","Slideshare","Soundcloud",
+                "Stackoverflow","Steam","Telegram","TradingView","Trello","TripAdvisor","Vimeo","Weibo","Wikipedia","Xhamster","VSCO"] 
     listOfWeb = []
+
     for i in input:
         
         temp = i
         sitename = temp['sitename']
         firstLetter = sitename[0:1]
-        if sitename in showsite:
+        if sitename in showsite: #if site name in showsite we will use special icon
 
             listOfWeb.append({'sitename' : temp['sitename'], 
-                            'url' : temp['url_user'],
-                            "img" : f"{sitename}.png"})
+                            'url' : [temp['url_user']],
+                            "img" : f"{sitename}.png",
+                            "name" : [f"{name}"]})
         else:
             listOfWeb.append({'sitename' : temp['sitename'], 
-                            'url' : temp['url_user'],
-                            "img" : f"{firstLetter}.png"})
+                            'url' : [temp['url_user']],
+                            "img" : f"{firstLetter}.png",
+                            "name" : [f"{name}"]})
 
     return listOfWeb  
 
+#sort the icon by showsite first
 def sortIcon(input:list):
-    showsite = ["Youtube","Facebook","Amazon","Reddit","VK","Instagram","Twitch","Ebay","Twitter","Wordpress","Pornhub","GitHub","Spotify","Tiktok","Xvideos","Tumblr","Pinterest","Patreon"]
+    showsite = ["Youtube","Facebook","Amazon","Reddit","VK","Instagram","Twitch","Ebay","Twitter","Wordpress","Pornhub","GitHub","Spotify",
+                "TikTok","Xvideos","Tumblr","Pinterest","Patreon","9gag","Academia.edu","Adobe","Baidu","Figma","Freepik","Googlemap","Googleplus",
+                "Imgur","Medium","OracleCommunity","Playstore","Quora","Researchgate","Roblox","Shutterstock","Slack","Slideshare","Soundcloud",
+                "Stackoverflow","Steam","Telegram","TradingView","Trello","TripAdvisor","Vimeo","Weibo","Wikipedia","Xhamster","VSCO"] 
     for i in input:
         if i['sitename'] in showsite:
             input.insert(0, input.pop(input.index(i)))
-    pprint(input)
     return input
 
+# remove the unnessary website from listweb
 def removeTrash(input:list):
-    trash = ['F6S','TJournal','Pixwox','TRASHBOX.RU']
+    trash = ['F6S','TJournal','Pixwox','TRASHBOX.RU', 'Strava', 'DonationsAlerts','forums.imore.com',"banki.ru"]
+    temp = input.copy()
     for i in input:
         if i['sitename'] in trash:
-            input.pop(input.index(i))
-    return input
-# def checkdupe(input :list ,sitename:str):
-
-#     for count,data in enumerate(input):
-#         if sitename == data['sitename']:
-#             return count
+            temp.pop(temp.index(i))
+    return temp
 
 
-# maigret('ohmsnow')
-#  {'img': 'g.png',
-#  {'img': 'Reddit_grey.png', 'sitename': 'Reddit', 'url': ''},
-#  {'img': 'VK_grey.png', 'sitename': 'VK', 'url': ''},
-#  {'img': 'Instagram_grey.png', 'sitename': 'Instagram', 'url': ''},
-#  {'img': 'Twitch_grey.png', 'sitename': 'Twitch', 'url': ''},
-#  {'img': 'Ebay_grey.png', 'sitename': 'Ebay', 'url': ''},
-#  {'img': 'Twitter_grey.png', 'sitename': 'Twitter', 'url': ''},
-#  {'img': 'Wordpress_grey.png', 'sitename': 'Wordpress', 'url': ''},
-#  {'img': 'Pornhub_grey.png', 'sitename': 'Pornhub', 'url': ''},
-#  {'img': 'Github_grey.png', 'sitename': 'Github', 'url': ''},
-#  {'img': 'Spotify_grey.png', 'sitename': 'Spotify', 'url': ''},
-#  {'img': 'Tiktok_grey.png', 'sitename': 'Tiktok', 'url': ''},
-#  {'img': 'Xvideos_grey.png', 'sitename': 'Xvideos', 'url': ''},
-#  {'img': 'Tumblr.png',
-#   'sitename': 'Tumblr',
-#   'url': 'https://tangktp.tumblr.com/'},
-#  {'img': 'Pinterest.png',
-#   'sitename': 'Pinterest',
-#   'url': 'https://www.pinterest.com/tangktp/'},
-#  {'img': 'Patreon_grey.png', 'sitename': 'Patreon', 'url': ''},
-#  {'img': 'K.png',
-#   'sitename': 'Kaggle',
-#   'url': 'https://www.kaggle.com/tangktp'},
-#  {'img': 'P.png',
-#   'sitename': 'Picuki',
-#   'url': 'https://www.picuki.com/profile/tangktp'},
-#  {'img': 'S.png',
-#   'sitename': 'Strava',
-#   'url': 'https://www.strava.com/athletes/tangktp'},
-#  {'img': 'F.png', 'sitename': 'F6S', 'url': 'https://www.f6s.com/tangktp'},
-#  {'img': 'P.png',
-#   'sitename': 'Pixwox',
-#   'url': 'https://www.pixwox.com/profile/tangktp/'},
-#  {'img': 'T.png',
-#   'sitename': 'TJournal',
-#   'url': 'https://tjournal.ru/search/v2/subsite/relevant?query=tangktp'},
-#  {'img': 'D.png',
-#   'sitename': 'DonationsAlerts',
-#   'url': 'https://www.donationalerts.com/r/tangktp'},
-#  {'img': 'Youtube_grey.png', 'sitename': 'Youtube', 'url': ''},
-#  {'img': 'Facebook_grey.png', 'sitename': 'Facebook', 'url': ''},
-#  {'img': 'Amazon_grey.png', 'sitename': 'Amazon', 'url': ''},
-#  {'img': 'Reddit_grey.png', 'sitename': 'Reddit', 'url': ''},
-#  {'img': 'VK_grey.png', 'sitename': 'VK', 'url': ''},
-#  {'img': 'Instagram_grey.png', 'sitename': 'Instagram', 'url': ''},
-#  {'img': 'Twitch.png',
-#   'sitename': 'Twitch',
-#   'url': 'https://www.twitch.tv/Tangkantapon'},
-#  {'img': 'Ebay_grey.png', 'sitename': 'Ebay', 'url': ''},
-#  {'img': 'Twitter_grey.png', 'sitename': 'Twitter', 'url': ''},
-#  {'img': 'Wordpress_grey.png', 'sitename': 'Wordpress', 'url': ''},
-#  {'img': 'Pornhub_grey.png', 'sitename': 'Pornhub', 'url': ''},
-#  {'img': 'Github_grey.png', 'sitename': 'Github', 'url': ''},
-#  {'img': 'Spotify_grey.png', 'sitename': 'Spotify', 'url': ''},
-#  {'img': 'Tiktok_grey.png', 'sitename': 'Tiktok', 'url': ''},
-#  {'img': 'Xvideos_grey.png', 'sitename': 'Xvideos', 'url': ''},
-#  {'img': 'Tumblr_grey.png', 'sitename': 'Tumblr', 'url': ''},
-#  {'img': 'Pinterest.png',
-#   'sitename': 'Pinterest',
-#   'url': 'https://www.pinterest.com/Tangkantapon/'},
-#  {'img': 'Patreon_grey.png', 'sitename': 'Patreon', 'url': ''},
-#  {'img': 'G.png',
-#   'sitename': 'GitHubGist',
-#   'url': 'https://gist.github.com/Tangkantapon'},
-#  {'img': 'G.png',
-#   'sitename': 'GitHub',
-#   'url': 'https://github.com/Tangkantapon'},
-#  {'img': 'N.png',
-#   'sitename': 'Nitter',
-#   'url': 'https://nitter.net/Tangkantapon'},
-#  {'img': 'g.png',
-#   'sitename': 'giphy.com',
-#   'url': 'https://giphy.com/channel/Tangkantapon'},
-#  {'img': 'R.png',
-#   'sitename': 'Roblox',
-#   'url': 'https://www.roblox.com/user.aspx?username=Tangkantapon'},
-#  {'img': 'P.png',
-#   'sitename': 'Picuki',
-#   'url': 'https://www.picuki.com/profile/Tangkantapon'},
-#  {'img': 'A.png',
-#   'sitename': 'Academia.edu',
-#   'url': 'https://independent.academia.edu/Tangkantapon'},
-#  {'img': 'S.png',
-#   'sitename': 'Strava',
-#   'url': 'https://www.strava.com/athletes/Tangkantapon'},
-#  {'img': 'F.png', 'sitename': 'F6S', 'url': 'https://www.f6s.com/Tangkantapon'},
-#  {'img': 'T.png',
-#   'sitename': 'TJournal',
-#   'url': 'https://tjournal.ru/search/v2/subsite/relevant?query=Tangkantapon'},
-#  {'img': 'P.png',
-#   'sitename': 'Pixwox',
-#   'url': 'https://www.pixwox.com/profile/Tangkantapon/'},
-#  {'img': 'A.png', 'sitename': 'AskFM', 'url': 'https://ask.fm/Tangkantapon'},
-#  {'img': 'g.png',
-#   'sitename': 'giters.com',
-#   'url': 'https://giters.com/Tangkantapon'},
-#  {'img': 'D.png',
-#   'sitename': 'DonationsAlerts',
-#   'url': 'https://www.donationalerts.com/r/Tangkantapon'},
-#  {'img': 'D.png',
-#   'sitename': 'Dumpor',
-#   'url': 'https://dumpor.com/v/Tangkantapon'},
-#  {'img': 'T.png',
-#   'sitename': 'TRASHBOX.RU',
-#   'url': 'https://trashbox.ru/users/Tangkantapon'}])
+
+
+
