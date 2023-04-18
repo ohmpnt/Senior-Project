@@ -24,9 +24,6 @@
 ## Installation
 
 Maigret can be installed using pip and simply can be launched from the cloned repo.
-
-### Package installing
-
 **NOTE**: Python 3.8 or higher and pip is required, **Python 3.8 is recommended.**
 
 ### Cloning a repository to directory
@@ -78,6 +75,14 @@ pip install facebook-scraper
 pip install google
 ```
 
+#### Chrome web driver
+ You need to install the right version of Chrome web driver in order to run the web server, simply check your chrome version by 
+ * On your computer open Chrome.
+ * At the top right .
+ * look at More Click Help > About Chrome. <br>
+ 
+ And then download the corresponding version in [Chromium](https://chromedriver.chromium.org/downloads)
+ 
 ## Usage examples
 
 ```bash
