@@ -52,5 +52,3 @@ def revimg_search(url:str):
     driver.close()
     return  dataLink #return the link
 
-# x= [{'data': 'https://scontent.fbkk2-4.fna.fbcdn.net/v/t39.30808-6/340089215_908030273789884_7963349578819193249_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=-3XwhbJKMjAAX9g8hBl&_nc_ht=scontent.fbkk2-4.fna&oh=00_AfBovVzFtaGifH2JUW_jbY0mHBZDMT0Le5fKjHlVAOhP4w&oe=644287FF'},{'data': 'https://scontent.fbkk2-4.fna.fbcdn.net/v/t39.30808-6/340089215_908030273789884_7963349578819193249_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=-3XwhbJKMjAAX9g8hBl&_nc_ht=scontent.fbkk2-4.fna&oh=00_AfBovVzFtaGifH2JUW_jbY0mHBZDMT0Le5fKjHlVAOhP4w&oe=644287FF'},{'data': 'https://scontent.fbkk2-4.fna.fbcdn.net/v/t39.30808-6/340089215_908030273789884_7963349578819193249_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=-3XwhbJKMjAAX9g8hBl&_nc_ht=scontent.fbkk2-4.fna&oh=00_AfBovVzFtaGifH2JUW_jbY0mHBZDMT0Le5fKjHlVAOhP4w&oe=644287FF'}]
-# revImages(x)
