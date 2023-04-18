@@ -2,7 +2,7 @@
 
 <p align="center">
   <p align="center">
-    <img src="https://raw.githubusercontent.com/soxoj/maigret/main/static/maigret.png" height="200"/>
+    <img src="https://github.com/ohmpnt/Senior-Project/blob/main/static/assets/HawkerRM.png" height="200"/>
   </p>
 </p>
 
