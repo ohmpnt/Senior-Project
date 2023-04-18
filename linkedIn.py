@@ -95,3 +95,4 @@ def search_linkedin(URL:str):
     except:
         pass
     return data
+
