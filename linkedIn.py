@@ -27,7 +27,19 @@ def search_linkedin(URL:str):
     if URL is None:
         return data
     curPath = os.getcwd()
-    driver = webdriver.Chrome(f"{curPath}/ggDriver/chromedriver.exe") # open google chrome webdriver
+    # Create Chromeoptions instance 
+    options = webdriver.ChromeOptions() 
+ 
+    # Adding argument to disable the AutomationControlled flag 
+    options.add_argument("--disable-blink-features=AutomationControlled") 
+ 
+    # Exclude the collection of enable-automation switches 
+    options.add_experimental_option("excludeSwitches", ["enable-automation"]) 
+ 
+    # Turn-off userAutomationExtension 
+    options.add_experimental_option("useAutomationExtension", False) 
+    curPath = os.getcwd()
+    driver = webdriver.Chrome(f"{curPath}/ggDriver/chromedriver.exe",options=options) # open google chrome webdriver
     driver.get(URL) #get to the url
     time.sleep(1)
     src = driver.page_source #get the page source
