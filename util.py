@@ -72,10 +72,10 @@ def main(x:str)->list:
     finalOut['email'] = maskData(finalOut['email'])
     finalOut['phoneNumber'] = maskData(finalOut['phoneNumber'])
     finalOut['ID']= maskData(finalOut['ID'])
-
+    print("------------------------------------------end mask")
     #load images 
     images(finalOut['picture'])
-
+    print("------------------------------------------asdasdasdasdasdasdasdasd")
     # imgChecker module
     print("------------------------------------- duplichecker module start -------------------------------------")
     revLink = revImages(finalOut['picture']) 

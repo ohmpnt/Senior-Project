@@ -94,16 +94,17 @@ def search_linkedin(URL:str):
     # profile picture
     try:
         pic = []
-        for link in soup.find_all('img',attrs={'data-delayed-url': re.compile("^https://media.licdn.com")}):
+        for link in soup.find_all('img',attrs={'src': re.compile("^https://media.licdn.com")}):
     
-            pic.append(link.get('data-delayed-url'))  
+            pic.append(link.get('src'))  
 
         data['picture'].append({
                                     'sitename': 'LinkedIn', 
                                     'url' : URL,
-                                    'data': pic[0],
+                                    'data': pic[1],
                                     'tag' : 'social network'
                                 })
     except:
         pass
+    pprint(data)
     return data

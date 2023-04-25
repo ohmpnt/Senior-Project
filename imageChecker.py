@@ -15,7 +15,10 @@ def revImages(input :list):
     #loop through each  image
     for i in input:
         temp = i['data']
-        url = temp[temp.rfind("https"):] #start link with https incase of invalid link
+        if "https" in temp:
+            url = temp[temp.rfind("https"):]  #start link with https incase of invalid link
+        else:
+            url = temp[temp.rfind("http"):]
         result.append(revimg_search(url)) # call revimg_search and put into result list
 
     return result
