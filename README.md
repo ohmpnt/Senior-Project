@@ -83,6 +83,8 @@ pip install google
  
  And then download the corresponding version in [Chromium](https://chromedriver.chromium.org/downloads)
  
+ Then push the Chrome web driver to folder ggDriver
+ 
 ## Usage examples
 
 ```bash
