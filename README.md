@@ -8,6 +8,10 @@
 
 <i> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Hawker definition, a person who hunts with hawks or other birds of prey. This symbolizes how our application is able to detect a user's personal information with eyes like a hawk. </i>
 
+## Disclaimer
+Disclaimer: This project is used for searching sensitive information only. Don't use it for execute cyber-attacks and harm others
+
+
 ## About
    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **A web application** that integrates a number of OSINT techniques to search for the target user's sensitive data. The user's photo and any private information that has been made publicly accessible online are retrieved. A risk score is created using the data gathered. This rating informs the user of the level of danger associated with accessing the information and how much information they have exposed online. Finally, based on the risk score, recommendations are made to the user to enable him or her decide how to use the information and maintain their privacy.
 
