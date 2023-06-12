@@ -9,7 +9,7 @@
 <i> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Hawker definition, a person who hunts with hawks or other birds of prey. This symbolizes how our application is able to detect a user's personal information with eyes like a hawk. </i>
 
 ## Disclaimer
-Disclaimer: This project is used for searching sensitive information only. Don't use it for execute cyber-attacks and harm others
+Disclaimer: This project is used for searching sensitive information only, Don't use it for execute cyber-attacks and harm others.
 
 
 ## About
